@@ -127,7 +127,7 @@ ControllerAll = false
 local ListSudos ={
 FNKER,
 Sudo_Id,
-5593976521,
+1923405236,
 2087985741
 }
 for k, v in pairs(ListSudos) do
@@ -148,7 +148,7 @@ Managers = Redis:sismember(FNKER.."HIDAR:Managers:"..ChatId,UserId)
 Admin = Redis:sismember(FNKER.."HIDAR:Admins:"..ChatId,UserId)
 VipMem = Redis:sismember(FNKER.."HIDAR:VipMem:"..ChatId,UserId)
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
-if UserId == 5593976521 then
+if UserId == 1923405236 then
 Status = 'مبـرمج السـورس'
 elseif UserId == 2087985741 then  
 Status = 'مطـور السـورس'
@@ -758,7 +758,7 @@ Managers = Redis:sismember(FNKER.."HIDAR:Managers:"..ChatId,UserId)
 Admin = Redis:sismember(FNKER.."HIDAR:Admins:"..ChatId,UserId)
 VipMem = Redis:sismember(FNKER.."HIDAR:VipMem:"..ChatId,UserId)
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
-if UserId == 5593976521 then
+if UserId == 1923405236 then
 Status = true
 elseif UserId == 2087985741 then  
 Status = true
@@ -930,7 +930,7 @@ end
 else
 StatusMember = "QnkgQWhtZWRBeWFk"
 end
-if tonumber(UserId) == 5593976521 then
+if tonumber(UserId) == 1923405236 then
 ay.The_Controller = 1
 ay.Name_Controller = 'مبـرمج السـورس'
 elseif tonumber(UserId) == 2087985741 then
@@ -2847,218 +2847,218 @@ return LuaTele.sendText(msg.chat_id,msg.id,"\n≭︰لقد فزت في اللع�
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."gamebot:Set:Manager:rd"..msg.sender_id.user_id..":"..msg.chat_id) == "true" then
-Redis:set(Saidi.."gamebot:Set:Manager:rd"..msg.sender_id.user_id..":"..msg.chat_id,"true1uu")
-Redis:sadd(Saidi.."gamebot:List:Manager", text)
+if Redis:get(FNKER.."gamebot:Set:Manager:rd"..msg.sender_id.user_id..":"..msg.chat_id) == "true" then
+Redis:set(FNKER.."gamebot:Set:Manager:rd"..msg.sender_id.user_id..":"..msg.chat_id,"true1uu")
+Redis:sadd(FNKER.."gamebot:List:Manager", text)
 return send(msg.chat_id,msg.id,'\nتم حفظ السؤال بنجاح')
 end
 end
 
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."gamebot:Set:Manager:rdd"..msg.sender_id.user_id..":"..msg.chat_id) == "true" then
-Redis:set(Saidi.."gamebot:Set:Manager:rdd"..msg.sender_id.user_id..":"..msg.chat_id,"true1uu")
-Redis:srem(Saidi.."gamebot:List:Manager", text)
+if Redis:get(FNKER.."gamebot:Set:Manager:rdd"..msg.sender_id.user_id..":"..msg.chat_id) == "true" then
+Redis:set(FNKER.."gamebot:Set:Manager:rdd"..msg.sender_id.user_id..":"..msg.chat_id,"true1uu")
+Redis:srem(FNKER.."gamebot:List:Manager", text)
 return send(msg.chat_id,msg.id,'\nتم مسح السؤال بنجاح')
 end
 end
 if msg.content.audio then  
-if Redis:get(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'start' then
-Redis:set(Saidi.."audio:Games"..msg.sender_id.user_id..":"..msg.chat_id,msg.content.audio.audio.remote.id)  
-Redis:sadd(Saidi.."audio:Games:Bot",msg.content.audio.audio.remote.id)  
-Redis:set(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id,'started')
+if Redis:get(FNKER.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'start' then
+Redis:set(FNKER.."audio:Games"..msg.sender_id.user_id..":"..msg.chat_id,msg.content.audio.audio.remote.id)  
+Redis:sadd(FNKER.."audio:Games:Bot",msg.content.audio.audio.remote.id)  
+Redis:set(FNKER.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id,'started')
 return send(msg.chat_id, msg.id,'• ارسل اسم الموسيقى الان ...')
 end   
 end
 
-if Redis:get(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'started' then
-Redis:del(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
-local Id_audio = Redis:get(Saidi.."audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
-Redis:set(Saidi..'Text:Games:audio'..Id_audio,text)
-Redis:del(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
+if Redis:get(FNKER.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'started' then
+Redis:del(FNKER.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
+local Id_audio = Redis:get(FNKER.."audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
+Redis:set(FNKER..'Text:Games:audio'..Id_audio,text)
+Redis:del(FNKER.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
 return send(msg.chat_id, msg.id,'• تم حفظ الصوت ')
 end
 
-if Redis:get(Saidi..'Games:Set:Answer'..msg.chat_id) then
-if text == ""..(Redis:get(Saidi..'Games:Set:Answer'..msg.chat_id) or '66765$47').."" then 
-Redis:del(Saidi.."Games:Set:Answer"..msg.chat_id)
-Redis:incrby(Saidi.."Num:Add:Games"..msg.chat_id..msg.sender_id.user_id,5)  
-Redis:del(Saidi.."Games:Set:Answer"..msg.chat_id)
+if Redis:get(FNKER..'Games:Set:Answer'..msg.chat_id) then
+if text == ""..(Redis:get(FNKER..'Games:Set:Answer'..msg.chat_id) or '66765$47').."" then 
+Redis:del(FNKER.."Games:Set:Answer"..msg.chat_id)
+Redis:incrby(FNKER.."Num:Add:Games"..msg.chat_id..msg.sender_id.user_id,5)  
+Redis:del(FNKER.."Games:Set:Answer"..msg.chat_id)
 return send(msg.chat_id,msg.id,'*• الف مبروك اجابتك صحيحه تم اضافه لك 5 نقاط*')
 end
 end
-if Redis:get(Saidi.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'startdel' then
-if not Redis:sismember(Saidi.."All:text:Games:Bot",text) then
+if Redis:get(FNKER.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'startdel' then
+if not Redis:sismember(FNKER.."All:text:Games:Bot",text) then
 send(msg_chat_id,msg_id,'• لا يوجد صوتيه بهذا الاسم في العامه')
-Redis:del(Saidi.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
+Redis:del(FNKER.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
 return false
 end
-Redis:del(Saidi.."All:audio:Games"..text)
-Redis:srem(Saidi.."All:text:Games:Bot",text)  
-Redis:del(Saidi.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
+Redis:del(FNKER.."All:audio:Games"..text)
+Redis:srem(FNKER.."All:text:Games:Bot",text)  
+Redis:del(FNKER.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
 send(msg_chat_id,msg_id,'• تم مسح الصوتيه بنجاح')
 return false
 end
 
-if Redis:get(Saidi.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'start' then
-Redis:set(Saidi..'All:Text:Games:audio'..msg.chat_id,text)
-Redis:sadd(Saidi.."All:text:Games:Bot",text)  
-Redis:set(Saidi.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id,'started')
+if Redis:get(FNKER.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'start' then
+Redis:set(FNKER..'All:Text:Games:audio'..msg.chat_id,text)
+Redis:sadd(FNKER.."All:text:Games:Bot",text)  
+Redis:set(FNKER.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id,'started')
 send(msg_chat_id,msg_id,'• الان ارسل الصوتيه ليتم حفظها باسم  : '..text)
 return false
 end
-if Redis:get(Saidi.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'started' then
+if Redis:get(FNKER.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'started' then
 if msg.content.audio then  
-local nameaudio = Redis:get(Saidi..'All:Text:Games:audio'..msg.chat_id)
-Redis:set(Saidi.."All:audio:Games"..nameaudio,msg.content.audio.audio.remote.id)  
-Redis:del(Saidi.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
+local nameaudio = Redis:get(FNKER..'All:Text:Games:audio'..msg.chat_id)
+Redis:set(FNKER.."All:audio:Games"..nameaudio,msg.content.audio.audio.remote.id)  
+Redis:del(FNKER.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
 send(msg_chat_id,msg_id,'• تم حفظ الصوتيه باسم : '..nameaudio)
 return false
 end   
 end
-if text and not Redis:get(Saidi..'lock_geamsAudio'..msg.chat_id) then
-local nameaudio = Redis:get(Saidi.."All:audio:Games"..text)
+if text and not Redis:get(FNKER..'lock_geamsAudio'..msg.chat_id) then
+local nameaudio = Redis:get(FNKER.."All:audio:Games"..text)
 if nameaudio then
 bot.sendAudio(msg_chat_id, msg.id,nameaudio , '', "md") 
 end
 end
 
-if Redis:get(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'startdel' then
-if not Redis:sismember(Saidi.."text:Games:Bot"..msg.chat_id,text) then
+if Redis:get(FNKER.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'startdel' then
+if not Redis:sismember(FNKER.."text:Games:Bot"..msg.chat_id,text) then
 send(msg_chat_id,msg_id,'• لا يوجد صوتيه بهذا الاسم في الكروب')
-Redis:del(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
+Redis:del(FNKER.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
 return false
 end
-Redis:del(Saidi.."audio:Games"..msg.chat_id..text)
-Redis:srem(Saidi.."text:Games:Bot"..msg.chat_id,text)  
-Redis:del(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
+Redis:del(FNKER.."audio:Games"..msg.chat_id..text)
+Redis:srem(FNKER.."text:Games:Bot"..msg.chat_id,text)  
+Redis:del(FNKER.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
 send(msg_chat_id,msg_id,'• تم مسح الصوتيه بنجاح')
 return false
 end
 
 
-if Redis:get(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'started' then
+if Redis:get(FNKER.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'started' then
 if msg.content.audio then  
-local nameaudio = Redis:get(Saidi..'Text:Games:audio'..msg.chat_id)
-Redis:set(Saidi.."audio:Games"..msg.chat_id..nameaudio,msg.content.audio.audio.remote.id)  
-Redis:del(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
+local nameaudio = Redis:get(FNKER..'Text:Games:audio'..msg.chat_id)
+Redis:set(FNKER.."audio:Games"..msg.chat_id..nameaudio,msg.content.audio.audio.remote.id)  
+Redis:del(FNKER.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
 send(msg_chat_id,msg_id,'• تم حفظ الصوتيه باسم : '..nameaudio)
 return false
 end   
 end
-if text and not Redis:get(Saidi..'lock_geamsAudio1'..msg.chat_id) then
-local nameaudio = Redis:get(Saidi.."audio:Games"..msg.chat_id..text)
+if text and not Redis:get(FNKER..'lock_geamsAudio1'..msg.chat_id) then
+local nameaudio = Redis:get(FNKER.."audio:Games"..msg.chat_id..text)
 if nameaudio then
 bot.sendAudio(msg_chat_id, msg.id,nameaudio , '', "md") 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "truedel" then
-Redis:set(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"truefguigf1")
-Redis:del(Saidi.."gamebot:newqus"..msg.chat_id,text)
-Redis:srem(Saidi.."gamebot:new1", text)
+if Redis:get(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "truedel" then
+Redis:set(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"truefguigf1")
+Redis:del(FNKER.."gamebot:newqus"..msg.chat_id,text)
+Redis:srem(FNKER.."gamebot:new1", text)
 return send(msg_chat_id,msg_id, '\nتم مسح السؤال بنجاح') 
 end
 end
 
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true" then
-Redis:set(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true1")
-Redis:set(Saidi.."gamebot:newqus"..msg.chat_id,text)
-Redis:sadd(Saidi.."gamebot:new1", text)
+if Redis:get(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true" then
+Redis:set(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true1")
+Redis:set(FNKER.."gamebot:newqus"..msg.chat_id,text)
+Redis:sadd(FNKER.."gamebot:new1", text)
 return send(msg_chat_id,msg_id, '\nتم حفظ السؤال بنجاح \n ارسل الجواب الاول') 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true1" then
-local quschen = Redis:get(Saidi.."gamebot:newqus"..msg.chat_id)
-Redis:set(Saidi.."gamebot:newqus:as1"..quschen,text)
-Redis:set(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true2")
+if Redis:get(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true1" then
+local quschen = Redis:get(FNKER.."gamebot:newqus"..msg.chat_id)
+Redis:set(FNKER.."gamebot:newqus:as1"..quschen,text)
+Redis:set(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true2")
 return send(msg_chat_id,msg_id, ' \n ارسل الجواب الثاني') 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true2" then
-local quschen = Redis:get(Saidi.."gamebot:newqus"..msg.chat_id)
-Redis:set(Saidi.."gamebot:newqus:as2"..quschen,text)
-Redis:set(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true3")
+if Redis:get(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true2" then
+local quschen = Redis:get(FNKER.."gamebot:newqus"..msg.chat_id)
+Redis:set(FNKER.."gamebot:newqus:as2"..quschen,text)
+Redis:set(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true3")
 return send(msg_chat_id,msg_id, '\n ارسل الجواب الثالث') 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true3" then
-local quschen = Redis:get(Saidi.."gamebot:newqus"..msg.chat_id)
-Redis:set(Saidi.."gamebot:newqus:as3"..quschen,text)
-Redis:set(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true4")
+if Redis:get(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true3" then
+local quschen = Redis:get(FNKER.."gamebot:newqus"..msg.chat_id)
+Redis:set(FNKER.."gamebot:newqus:as3"..quschen,text)
+Redis:set(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true4")
 return send(msg_chat_id,msg_id, '\n ارسل الجواب الرابع') 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true4" then
-local quschen = Redis:get(Saidi.."gamebot:newqus"..msg.chat_id)
-Redis:set(Saidi.."gamebot:newqus:as0"..quschen,text)
-Redis:set(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true44")
+if Redis:get(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true4" then
+local quschen = Redis:get(FNKER.."gamebot:newqus"..msg.chat_id)
+Redis:set(FNKER.."gamebot:newqus:as0"..quschen,text)
+Redis:set(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true44")
 return send(msg_chat_id,msg_id, '\nتم حفظ الاجوبه \n ارسل الجواب الصحيح') 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true44" then
-local quschen = Redis:get(Saidi.."gamebot:newqus"..msg.chat_id)
-Redis:set(Saidi.."gamebot:newqus:as4"..quschen,text)
-Redis:set(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true186")
+if Redis:get(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true44" then
+local quschen = Redis:get(FNKER.."gamebot:newqus"..msg.chat_id)
+Redis:set(FNKER.."gamebot:newqus:as4"..quschen,text)
+Redis:set(FNKER.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true186")
 return send(msg_chat_id,msg_id, '\nتم حفظ الجواب الصحيح') 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "truedel" then
+if Redis:get(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "truedel" then
 send(msg_chat_id,msg_id, '\nتم مسح الغز بنجاح')
-Redis:set(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"truefguigf1")
-Redis:del(Saidi.."lkz:gamebot:newqus"..msg.chat_id,text)
-Redis:srem(Saidi.."lkz:gamebot:new1", text)
+Redis:set(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"truefguigf1")
+Redis:del(FNKER.."lkz:gamebot:newqus"..msg.chat_id,text)
+Redis:srem(FNKER.."lkz:gamebot:new1", text)
 return false 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true" then
+if Redis:get(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true" then
 send(msg_chat_id,msg_id, '\nتم حفظ اللغز بنجاح \n ارسل الجواب الاول')
-Redis:set(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true1")
-Redis:set(Saidi.."lkz:gamebot:newqus"..msg.chat_id,text)
-Redis:sadd(Saidi.."lkz:gamebot:new1", text)
+Redis:set(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true1")
+Redis:set(FNKER.."lkz:gamebot:newqus"..msg.chat_id,text)
+Redis:sadd(FNKER.."lkz:gamebot:new1", text)
 return false 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true1" then
+if Redis:get(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true1" then
 send(msg_chat_id,msg_id, ' \n ارسل الجواب الثاني')
-local quschen = Redis:get(Saidi.."lkz:gamebot:newqus"..msg.chat_id)
-Redis:set(Saidi.."lkz:gamebot:newqus:as1"..quschen,text)
-Redis:set(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true2")
+local quschen = Redis:get(FNKER.."lkz:gamebot:newqus"..msg.chat_id)
+Redis:set(FNKER.."lkz:gamebot:newqus:as1"..quschen,text)
+Redis:set(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true2")
 return false 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true2" then
+if Redis:get(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true2" then
 send(msg_chat_id,msg_id, '\n ارسل الجواب الثالث')
-local quschen = Redis:get(Saidi.."lkz:gamebot:newqus"..msg.chat_id)
-Redis:set(Saidi.."lkz:gamebot:newqus:as2"..quschen,text)
-Redis:set(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true3")
+local quschen = Redis:get(FNKER.."lkz:gamebot:newqus"..msg.chat_id)
+Redis:set(FNKER.."lkz:gamebot:newqus:as2"..quschen,text)
+Redis:set(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true3")
 return false 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true3" then
+if Redis:get(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true3" then
 send(msg_chat_id,msg_id, ' \n ارسل الجواب الصحيح')
-local quschen = Redis:get(Saidi.."lkz:gamebot:newqus"..msg.chat_id)
-Redis:set(Saidi.."lkz:gamebot:newqus:as3"..quschen,text)
-Redis:set(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true44")
+local quschen = Redis:get(FNKER.."lkz:gamebot:newqus"..msg.chat_id)
+Redis:set(FNKER.."lkz:gamebot:newqus:as3"..quschen,text)
+Redis:set(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true44")
 return false 
 end
 end
 if text and text:match("^(.*)$") then
-if Redis:get(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true44" then
+if Redis:get(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id) == "true44" then
 send(msg_chat_id,msg_id, '\nتم حفظ الجواب الصحيح')
-local quschen = Redis:get(Saidi.."lkz:gamebot:newqus"..msg.chat_id)
-Redis:set(Saidi.."lkz:gamebot:newqus:as4"..quschen,text)
-Redis:set(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true186")
+local quschen = Redis:get(FNKER.."lkz:gamebot:newqus"..msg.chat_id)
+Redis:set(FNKER.."lkz:gamebot:newqus:as4"..quschen,text)
+Redis:set(FNKER.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,"true186")
 return false 
 end
 if text then
@@ -3511,155 +3511,6 @@ Redis:set(FNKER.."lockalllll","off")
 LuaTele.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender.user_id,"≭︰تم قفـل @all هنا").Lock,"md",true)  
 return false
 end 
-if text == 'مسح صوت' then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Manger then
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
-end
-Redis:set(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id,'startdel')
-return send(msg_chat_id,msg_id,'• ارسل اسم الصوتيه',"md")
-end
-if text== 'اضف صوت' then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Manger then
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
-end
-Redis:set(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id,'start')
-return send(msg_chat_id,msg_id, '• ارسل اسم الصوت الان ...',"md")
-end
-if text== ("الصوتيات") then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-local list = Redis:smembers(Saidi.."text:Games:Bot"..msg.chat_id)
-if #list == 0 then
-send(msg_chat_id,msg_id, "• لا توجد صوتيات")
-return false
-end
-message = '• قائمه الصوتيات :\n     للتشغيل اختر اسم من الاتي:\nـــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n'
-for k,v in pairs(list) do
-message = message..""..k.."- ("..v..")\n"
-end
-send(msg_chat_id,msg_id,message)
-end
-if text== ("مسح الصوتيات") then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Manger then
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
-end
-local list = Redis:smembers(Saidi.."text:Games:Bot"..msg.chat_id)
-if #list == 0 then
-send(msg_chat_id,msg_id, "• لا توجد صوتيات عامه")
-return false
-end
-for k,v in pairs(list) do
-Redis:srem(Saidi.."text:Games:Bot"..msg.chat_id,v)
-Redis:del(Saidi.."audio:Games"..msg.chat_id..v)
-end
-send(msg_chat_id,msg_id, "• تم مسح جميع الصوتيات")
-end
-
-
-if text == 'مسح صوت عام' then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-Redis:set(Saidi.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id,'startdel')
-send(msg_chat_id,msg_id, '• ارسل اسم الصوتيه',"md")
-end
-if text== 'اضف صوت عام' then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-Redis:set(Saidi.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id,'start')
-send(msg_chat_id,msg_id, '• ارسل اسم الصوت الان ...',"md")
-end
-if text== ("الصوتيات العامه") or text== ("الاغاني") then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-local list = Redis:smembers(Saidi.."All:text:Games:Bot")
-if #list == 0 then
-send(msg_chat_id,msg_id, "• لا توجد صوتيات عامه")
-return false
-end
-message = '• قائمه الصوتيات العامه:\n     للتشغيل اختر اسم من الاتي:\nـــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n'
-for k,v in pairs(list) do
-message = message..""..k.."- ("..v..")\n"
-end
-send(msg_chat_id,msg_id,message)
-end
-if text== ("مسح الصوتيات العامه") then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-local list = Redis:smembers(Saidi.."All:text:Games:Bot")
-if #list == 0 then
-send(msg_chat_id,msg_id, "• لا توجد صوتيات")
-return false
-end
-for k,v in pairs(list) do
-Redis:srem(Saidi.."All:text:Games:Bot",v)
-Redis:del(Saidi.."All:audio:Games"..v)
-end
-send(msg_chat_id,msg_id, "• تم مسح جميع الصوتيات")
-end
-
 if text == "تفعيل all" and ChCheck(msg) or text == "تفعيل @all" and ChCheck(msg) then 
 if not msg.DevMain then
 return LuaTele.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender.user_id,'≭︰هذا الامر يخص ↫ '..Controller_Num(1)..' .\n•-› X').Warning,"md",true)    
@@ -6956,7 +6807,7 @@ return LuaTele.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender.user_id,"≭�
 end
 end
 if TextMsg == "اضف فلوس للمطور الاساسي" or TextMsg == "اضف فلوس" then
-if msg.sender.user_id ~= 5593976521 then
+if msg.sender.user_id ~= 1923405236 then
 return LuaTele.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender.user_id,'≭︰هذا الامر يخص ↫ مطور السورس فقط .\n•-› X').Warning,"md",true)  
 end
 if Redis:get(FNKER.."add:money") then
@@ -7328,7 +7179,7 @@ return LuaTele.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender.user_id,'≭�
 end
 end
 if TextMsg == "اضف فلوس للمطور الاساسي" or TextMsg == "اضف فلوس" then
-if msg.sender.user_id ~= 5593976521 then
+if msg.sender.user_id ~= 1923405236 then
 return LuaTele.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender.user_id,'≭︰هذا الامر يخص ↫ مطور السورس فقط .\n•-› X').Warning,"md",true)  
 end
 if not Redis:get(FNKER.."add:money") then
@@ -11843,7 +11694,7 @@ return LuaTele.sendText(msg.chat_id,msg.id,"\n≭︰عذرا هذا المستخ
 end
 local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
 local name = "["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")"
-if tonumber(Message_Reply.sender.user_id) == tonumber(5593976521) then 
+if tonumber(Message_Reply.sender.user_id) == tonumber(1923405236) then 
 LuaTele.sendText(msg.chat_id,msg.id, 'دروح عمي روح لا ضحك العالم عليك لا تندك بمطور السورس😏🔥', 'md')  
 return false  
 end  
@@ -11877,7 +11728,7 @@ local username = (text:match('^هينه @(.*)') or text:match('^هينها @(.*)
 local UserId_Info = LuaTele.searchPublicChat(username)
 local UserInfo = LuaTele.getUser(UserId_Info.id)
 local name = "["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")"
-if tonumber(UserId_Info.id) == tonumber(5593976521) then 
+if tonumber(UserId_Info.id) == tonumber(1923405236) then 
 LuaTele.sendText(msg.chat_id,msg.id, 'دروح عمي روح لا ضحك العالم عليك لا تندك بمطور السورس😏🔥', 'md')  
 return false  
 end  
@@ -11910,7 +11761,7 @@ if text and (text:match('^هينه (%d+)$') or text:match('^هينها (%d+)$'))
 local UserId = (text:match('^هينه (%d+)$') or text:match('^هينها (%d+)$'))
 local UserInfo = LuaTele.getUser(UserId)
 local name = "["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")"
-if tonumber(UserInfo.id) == tonumber(5593976521) then 
+if tonumber(UserInfo.id) == tonumber(1923405236) then 
 LuaTele.sendText(msg.chat_id,msg.id, 'دروح عمي روح لا ضحك العالم عليك لا تندك بمطور السورس😏🔥', 'md')  
 return false  
 end  
@@ -11951,7 +11802,7 @@ if tonumber(Message_Reply.sender.user_id) == tonumber(FNKER) then
 LuaTele.sendText(msg.chat_id,msg.id, 'فهمنيي شلوون راحح ابوس نفسيي؟😶💔', 'md') 
 return false  
 end  
-if tonumber(Message_Reply.sender.user_id) == tonumber(5593976521) then  
+if tonumber(Message_Reply.sender.user_id) == tonumber(1923405236) then  
 LuaTele.sendText(msg.chat_id,msg.reply_to_message_id, 'امصه مص مو بس ابوسه هذا مواححح 👅 💋', 'html')
 return false
 end 
@@ -11972,7 +11823,7 @@ if tonumber(UserId) == tonumber(FNKER) then
 LuaTele.sendText(msg.chat_id,msg.id, 'فهمنيي شلوون راحح ابوس نفسيي؟😶💔', 'md') 
 return false  
 end  
-if tonumber(UserId) == tonumber(5593976521) then  
+if tonumber(UserId) == tonumber(1923405236) then  
 LuaTele.sendText(msg.chat_id,msg.id, 'امصه مص مو بس ابوسه هذا مواححح 👅 💋', 'html')
 return false
 end 
@@ -11994,7 +11845,7 @@ if tonumber(UserId_Info.id) == tonumber(FNKER) then
 LuaTele.sendText(msg.chat_id,msg.id, 'فهمنيي شلوون راحح ابوس نفسيي؟😶💔', 'md') 
 return false  
 end  
-if tonumber(UserId_Info.id) == tonumber(5593976521) then  
+if tonumber(UserId_Info.id) == tonumber(1923405236) then  
 LuaTele.sendText(msg.chat_id,msg.id, 'امصه مص مو بس ابوسه هذا مواححح 👅 💋', 'html')
 return false
 end 
@@ -12019,7 +11870,7 @@ if tonumber(Message_Reply.sender.user_id) == tonumber(FNKER) then
 LuaTele.sendText(msg.chat_id,msg.id, 'فهمنيي شلوون راحح اصيح نفسيي؟😶💔', 'md') 
 return false  
 end  
-if tonumber(Message_Reply.sender.user_id) == tonumber(5593976521) then  
+if tonumber(Message_Reply.sender.user_id) == tonumber(1923405236) then  
 LuaTele.sendText(msg.chat_id,msg.reply_to_message_id, 'تعال مطوريي محتاجيكك🏃🏻‍♂️♥️', 'html')
 return false
 end 
@@ -12040,7 +11891,7 @@ if tonumber(UserInfo.id) == tonumber(FNKER) then
 LuaTele.sendText(msg.chat_id,msg.id, 'فهمنيي شلوون راحح اصيح نفسيي؟😶💔', 'md') 
 return false  
 end  
-if tonumber(UserInfo.id) == tonumber(5593976521) then  
+if tonumber(UserInfo.id) == tonumber(1923405236) then  
 LuaTele.sendText(msg.chat_id,msg.id, 'تعال مطوريي محتاجيكك🏃🏻‍♂️♥️', 'html')
 return false
 end 
@@ -12063,7 +11914,7 @@ if tonumber(UserInfo.id) == tonumber(FNKER) then
 LuaTele.sendText(msg.chat_id,msg.id, 'فهمنيي شلوون راحح اصيح نفسيي؟😶💔', 'md') 
 return false  
 end  
-if tonumber(UserInfo.id) == tonumber(5593976521) then  
+if tonumber(UserInfo.id) == tonumber(1923405236) then  
 LuaTele.sendText(msg.chat_id,nil, 'تعال '..namesudo..' محتاجيكك🏃🏻‍♂️♥️', 'md')
 return false
 end 
@@ -12154,7 +12005,7 @@ local List = {
 [[
 ➭- 𝒔𝒕𝒂𓂅 #stast 𓍯. 💕
 ➮- 𝒖𝒔𝒆𝒓𓂅 #username 𓍯. 💕
-➭- 𝒎𝒔𝒈𝒆𓂅 #msgs 𓍯. 💕
+➭- 𝒎??𝒈𝒆𓂅 #msgs 𓍯. 💕
 ➭- 𝒊𝒅 𓂅 #id 𓍯. 💕
 ]],
 [[
@@ -14278,913 +14129,7 @@ if i <= Count then  Text = Text..i.." - ["..(GetAllNames[v[2]] or "خطأ بال
 end
 return LuaTele.sendText(msg.chat_id,msg.id,Text,"md")
 end
-if text== 'مسح موسيقى' and msg.reply_to_message_id then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end 
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-local Message_Reply = bot.getMessage(msg.chat_id, msg.reply_to_message_id)  
-Redis:del(Saidi..'Text:Games:audio'..Message_Reply.content.audio.audio.remote.id)  
-Redis:srem(Saidi.."audio:Games:Bot",Message_Reply.content.audio.audio.remote.id)  
-return send(msg.chat_id, msg.id,'• تم مسح الموسيقى ومسح الجواب .')
-end
-
-
-if text== 'اضف موسيقى' then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-Redis:set(Saidi.."Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id,'start')
-return send(msg.chat_id, msg.id,'• ارسل الموسيقى الان ...')
-end
-
-if text== ("قائمه الموسيقى") then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-local list = Redis:smembers(Saidi.."audio:Games:Bot")
-if #list == 0 then
-return send(msg.chat_id, msg.id, "• لا يوجد اسئله")
-end
-for k,v in pairs(list) do
-bot.sendAudio(msg_chat_id, msg.id,v , '', "md") 
-end
-end
-
-if text== ("مسح قائمه الموسيقى") then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-local list = Redis:smembers(Saidi.."audio:Games:Bot")
-if #list == 0 then
-return send(msg.chat_id, msg.id, "• لا يوجد اسئله")
-end
-for k,v in pairs(list) do
-Redis:del(Saidi..'Text:Games:audio'..v)  
-Redis:srem(Saidi.."audio:Games:Bot",v)  
-end
-return send(msg.chat_id, msg.id, "• تم مسح جميع الاسئله")
-end
-
-if text== 'موسيقى' then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-local list = Redis:smembers(Saidi.."audio:Games:Bot")
-if #list == 0 then
-return send(msg.chat_id, msg.id, "• لا يوجد اسئله")
-end
-local quschen = list[math.random(#list)]
-local GetAnswer = Redis:get(Saidi..'Text:Games:audio'..quschen)
-Redis:set(Saidi..'Games:Set:Answer'..msg.chat_id,GetAnswer)
-bot.sendAudio(msg_chat_id, msg.id,quschen , '', "md") 
-return false
-end
--- kit 
--- kit defullt
-if text == "استيراد كت السورس" then
-  if not msg.Asasy then
-    return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص  '..Controller_Num(1)..' * ',"md",true)  
-    end
-if Redis:get(Saidi.."kit_defullt:") ~= "false" then
-    Redis:set(Saidi.."kit_defullt:","false")
-    local d_kit = {"اخر افلام شاهدتها", 
-"اخر افلام شاهدتها", 
-"ما هي وظفتك الحياه", 
-"اعز اصدقائك ?", 
-"اخر اغنية سمعتها ?", 
-"تكلم عن نفسك", 
-"ليه انت مش سالك", 
-"ما هيا عيوب سورس اكس؟ ", 
-"اخر كتاب قرآته", 
-"روايتك المفضله ?", 
-"اخر اكله اكلتها", 
-"اخر كتاب قرآته", 
-"ليش حسين ذكي؟ ", 
-"افضل يوم ف حياتك", 
-"ليه مضيفتش كل جهاتك", 
-"حكمتك ف الحياه", 
-"لون عيونك", 
-"كتابك المفضل", 
-"هوايتك المفضله", 
-"علاقتك مع اهلك", 
-" ما السيء في هذه الحياة ؟ ", 
-"أجمل شيء حصل معك خلال هذا الاسبوع ؟ ", 
-"سؤال ينرفزك ؟ ", 
-" هل يعجبك سورس اكس؟ ", 
-" اكثر ممثل تحبه ؟ ", 
-"قد تخيلت شي في بالك وصار ؟ ", 
-"شيء عندك اهم من الناس ؟ ", 
-"تفضّل النقاش الطويل او تحب الاختصار ؟ ", 
-"وش أخر شي ضيعته؟ ", 
-"اي رايك في سورس اكس؟ ", 
-"كم مره حبيت؟ ", 
-" اكثر المتابعين عندك باي برنامج؟", 
-" نسبه الندم عندك للي وثقت فيهم ؟", 
-"تحب ترتبط بكيرفي ولا فلات؟", 
-" جربت شعور احد يحبك بس انت مو قادر تحبه؟", 
-" تجامل الناس ولا اللي بقلبك على لسانك؟", 
-" عمرك ضحيت باشياء لاجل شخص م يسوى ؟", 
-"مغني تلاحظ أن صوته يعجب الجميع إلا أنت؟ ", 
-" آخر غلطات عمرك؟ ", 
-" مسلسل كرتوني له ذكريات جميلة عندك؟ ", 
-" ما أكثر تطبيق تقضي وقتك عليه؟ ", 
-" أول شيء يخطر في بالك إذا سمعت كلمة نجوم ؟ ", 
-" قدوتك من الأجيال السابقة؟ ", 
-" أكثر طبع تهتم بأن يتواجد في شريك/ة حياتك؟ ", 
-"أكثر حيوان تخاف منه؟ ", 
-" ما هي طريقتك في الحصول على الراحة النفسية؟ ", 
-" إيموجي يعبّر عن مزاجك الحالي؟ ", 
-" أكثر تغيير ترغب أن تغيّره في نفسك؟ ", 
-"أكثر شيء أسعدك اليوم؟ ", 
-"اي رايك في الدنيا دي ؟ ", 
-"ما هو أفضل حافز للشخص؟ ", 
-"ما الذي يشغل بالك في الفترة الحالية؟", 
-"آخر شيء ندمت عليه؟ ", 
-"شاركنا صورة احترافية من تصويرك؟ ", 
-"تتابع انمي؟ إذا نعم ما أفضل انمي شاهدته ", 
-"يرد عليك متأخر على رسالة مهمة وبكل برود، موقفك؟ ", 
-"نصيحه تبدا ب -لا- ؟ ", 
-"كتاب أو رواية تقرأها هذه الأيام؟ ", 
-"فيلم عالق في ذهنك لا تنساه مِن روعته؟ ", 
-"يوم لا يمكنك نسيانه؟ ", 
-"شعورك الحالي في جملة؟ ", 
-"كلمة لشخص بعيد؟ ", 
-"صفة يطلقها عليك الشخص المفضّل؟ ", 
-"أغنية عالقة في ذهنك هاليومين؟ ", 
-"أكلة مستحيل أن تأكلها؟ ", 
-"كيف قضيت نهارك؟ ", 
-"تصرُّف ماتتحمله؟ ", 
-"موقف غير حياتك؟ ", 
-"اكثر مشروب تحبه؟ ", 
-"القصيدة اللي تأثر بك؟ ", 
-"متى يصبح الصديق غريب ", 
-"وين نلقى السعاده برايك؟ ", 
-"تاريخ ميلادك؟ ", 
-"قهوه و لا شاي؟ ", 
-"من محبّين الليل أو الصبح؟ ", 
-"حيوانك المفضل؟ ", 
-"كلمة غريبة ومعناها؟ ", 
-"كم تحتاج من وقت لتثق بشخص؟ ", 
-"اشياء نفسك تجربها؟ ", 
-"يومك ضاع على؟ ", 
-"كل شيء يهون الا ؟ ", 
-"اسم ماتحبه ؟ ", 
-"وقفة إحترام للي إخترع ؟ ", 
-"أقدم شيء محتفظ فيه من صغرك؟ ", 
-"كلمات ماتستغني عنها بسوالفك؟ ", 
-"وش الحب بنظرك؟ ", 
-"حب التملك في شخصِيـتك ولا ؟ ", 
-"تخطط للمستقبل ولا ؟ ", 
-"موقف محرج ماتنساه ؟ ", 
-"من طلاسم لهجتكم ؟ ", 
-"اعترف باي حاجه ؟ ", 
-"عبّر عن مودك بصوره ؟ ",
-"اسم دايم ع بالك ؟ ", 
-"اشياء تفتخر انك م سويتها ؟ ", 
-" لو بكيفي كان ؟ ", 
-  "أكثر جملة أثرت بك في حياتك؟ ",
-  "إيموجي يوصف مزاجك حاليًا؟ ",
-  "أجمل اسم بنت بحرف الباء؟ ",
-  "كيف هي أحوال قلبك؟ ",
-  "أجمل مدينة؟ ",
-  "كيف كان أسبوعك؟ ",
-  "شيء تشوفه اكثر من اهلك ؟ ",
-  "اخر مره فضفضت؟ ",
-  "قد كرهت احد بسبب اسلوبه؟ ",
-  "قد حبيت شخص وخذلك؟ ",
-  "كم مره حبيت؟ ",
-  "اكبر غلطة بعمرك؟ ",
-  "نسبة النعاس عندك حاليًا؟ ",
-  "شرايكم بمشاهير التيك توك؟ ",
-  "ما الحاسة التي تريد إضافتها للحواس الخمسة؟ ",
-  "اسم قريب لقلبك؟ ",
-  "مشتاق لمطعم كنت تزوره قبل الحظر؟ ",
-  "أول شيء يخطر في بالك إذا سمعت كلمة (ابوي يبيك)؟ ",
-  "ما أول مشروع تتوقع أن تقوم بإنشائه إذا أصبحت مليونير؟ ",
-  "أغنية عالقة في ذهنك هاليومين؟ ",
-  "متى اخر مره قريت قرآن؟ ",
-  "كم صلاة فاتتك اليوم؟ ",
-  "تفضل التيكن او السنقل؟ ",
-  "وش أفضل بوت برأيك؟ ",
-"كم لك بالتلي؟ ",
-"وش الي تفكر فيه الحين؟ ",
-"كيف تشوف الجيل ذا؟ ",
-"منشن شخص وكوله، تحبني؟ ",
-"لو جاء شخص وعترف لك كيف ترده؟ ",
-"مر عليك موقف محرج؟ ",
-"وين تشوف نفسك بعد سنتين؟ ",
-"لو فزعت/ي لصديق/ه وقالك مالك دخل وش بتسوي/ين؟ ",
-"وش اجمل لهجة تشوفها؟ ",
-"قد سافرت؟ ",
-"افضل مسلسل عندك؟ ",
-"افضل فلم عندك؟ ",
-"مين اكثر يخون البنات/الجهال؟ ",
-"متى حبيت؟ ",
-  "بالعادة متى تنام؟ ",
-  "شيء من صغرك ماتغيير بك؟ ",
-  "شيء بسيط قادر يعدل مزاجك بشكل سريع؟ ",
-  "تشوف الغيره انانيه او حب؟ ",
-"حاجة تشوف نفسك مبدع فيها؟ ",
-  "مع او ضد : يسقط جمال المراة بسبب قبح لسانها؟ ",
-  "عمرك بكيت على شخص مات في مسلسل ؟ ",
-  "‏- هل تعتقد أن هنالك من يراقبك بشغف؟ ",
-  "تدوس على قلبك او كرامتك؟ ",
-  "اكثر لونين تحبهم مع بعض؟ ",
-  "مع او ضد : النوم افضل حل لـ مشاكل الحياة؟ ",
-  "سؤال دايم تتهرب من الاجابة عليه؟ ",
-  "تحبني ولاتحب الفلوس؟ ",
-  "العلاقه السريه دايماً تكون حلوه؟ ",
-  "لو أغمضت عينيك الآن فما هو أول شيء ستفكر به؟ ",
-"كيف ينطق الطفل اسمك؟ ",
-  "ما هي نقاط الضعف في شخصيتك؟ ",
-  "اكثر كذبة تكولها؟ ",
-  "تيكن ولا اضبطك؟ ",
-  "اطول علاقة كنت فيها مع شخص؟ ",
-  "قد ندمت على شخص؟ ",
-  "وقت فراغك وش تسوي؟ ",
-  "عندك أصحاب كثير؟ ولا ينعد بالأصابع؟ ",
-  "حاط نغمة خاصة لأي شخص؟ ",
-  "وش اسم شهرتك؟ ",
-  "أفضل أكلة تحبه لك؟ ",
-"عندك شخص تسميه ثالث والدينك؟ ",
-  "عندك شخص تسميه ثالث والدينك؟ ",
-  "اذا قالو لك تسافر أي مكان تبيه وتاخذ معك شخص واحد وين بتروح ومين تختار؟ ",
-  "أطول مكالمة كم ساعة؟ ",
-  "تحب الحياة الإلكترونية ولا الواقعية؟ ",
-  "كيف حال قلبك ؟ بخير ولا مكسور؟ ",
-  "أطول مدة نمت فيها كم ساعة؟ ",
-  "تقدر تسيطر على ضحكتك؟ ",
-  "أول حرف من اسم الحب؟ ",
-  "تحب تحافظ على الذكريات ولا تمسحه؟ ",
-  "اسم اخر شخص زعلك؟ ",
-"وش نوع الأفلام اللي تحب تتابعه؟ ",
-  "أنت انسان غامض ولا الكل يعرف عنك؟ ",
-  "لو الجنسية حسب ملامحك وش بتكون جنسيتك؟ ",
-  "عندك أخوان او خوات من الرضاعة؟ ",
-  "إختصار تحبه؟ ",
-  "إسم شخص وتحس أنه كيف؟ ",
-  "وش الإسم اللي دايم تحطه بالبرامج؟ ",
-  "وش برجك؟ ",
-  "لو يجي عيد ميلادك تتوقع يجيك هدية؟ ",
-  "اجمل هدية جاتك وش هو؟ ",
-  "الصداقة ولا الحب؟ ",
-"الصداقة ولا الحب؟ ",
-  "الغيرة الزائدة شك؟ ولا فرط الحب؟ ",
-  "قد حبيت شخصين مع بعض؟ وانقفطت؟ ",
-  "وش أخر شي ضيعته؟ ",
-  "قد ضيعت شي ودورته ولقيته بيدك؟ ",
-  "تؤمن بمكولة اللي يبيك مايحتار بك؟ ",
-  "سبب وجوك بالتليجرام؟ ",
-  "تراقب شخص حاليا؟ ",
-  "عندك معجبين ولا محد درا عنك؟ ",
-  "لو نسبة جمالك بتكون بعدد شحن جوالك كم بتكون؟ ",
-  "أنت محبوب بين الناس؟ ولاكريه؟ ",
-"كم عمرك؟ ",
-  "لو يسألونك وش اسم امك تجاوبهم ولا تسفل فيهم؟ ",
-  "تؤمن بمكولة الصحبة تغنيك الحب؟ ",
-  "وش مشروبك المفضل؟ ",
-  "قد جربت الدخان بحياتك؟ وانقفطت ولا؟ ",
-  "أفضل وقت للسفر؟ الليل ولا النهار؟ ",
-  "انت من النوع اللي تنام بخط السفر؟ ",
-  "عندك حس فكاهي ولا نفسية؟ ",
-  "تبادل الكراهية بالكراهية؟ ولا تحرجه بالطيب؟ ",
-  "أفضل ممارسة بالنسبة لك؟ ",
-  "لو قالو لك تتخلى عن شي واحد تحبه بحياتك وش يكون؟ ",
-"لو احد تركك وبعد فتره يحاول يرجعك بترجع له ولا خلاص؟ ",
-  "برأيك كم العمر المناسب للزواج؟ ",
-  "اذا تزوجت بعد كم بتخلف عيال؟ ",
-  "فكرت وش تسمي أول اطفالك؟ ",
-  "من الناس اللي تحب الهدوء ولا الإزعاج؟ ",
-  "الشيلات ولا الأغاني؟ ",
-  "عندكم شخص مطوع بالعايلة؟ ",
-  "تتقبل النصيحة من اي شخص؟ ",
-  "اذا غلطت وعرفت انك غلطان تحب تعترف ولا تجحد؟ ",
-  "جربت شعور احد يحبك بس انت مو قادر تحبه؟ ",
-  "دايم قوة الصداقة تكون بإيش؟ ",
-"أفضل البدايات بالعلاقة بـ وش؟ ",
-  "وش مشروبك المفضل؟ او قهوتك المفضلة؟ ",
-  "تحب تتسوق عبر الانترنت ولا الواقع؟ ",
-  "انت من الناس اللي بعد ماتشتري شي وتروح ترجعه؟ ",
-  "أخر مرة بكيت متى؟ وليش؟ ",
-  "عندك الشخص اللي يقلب الدنيا عشان زعلك؟ ",
-  "أفضل صفة تحبه بنفسك؟ ",
-  "كلمة تكولها للوالدين؟ ",
-  "أنت من الناس اللي تنتقم وترد الاذى ولا تحتسب الأجر وتسامح؟ ",
-  "كم عدد سنينك بالتليجرام؟ ",
-  "تحب تعترف ولا تخبي؟ ",
-"انت من الناس الكتومة ولا تفضفض؟ ",
-  "أنت بعلاقة حب الحين؟ ",
-  "عندك اصدقاء غير جنسك؟ ",
-  "أغلب وقتك تكون وين؟ ",
-  "لو المقصود يقرأ وش بتكتب له؟ ",
-  "تحب تعبر بالكتابة ولا بالصوت؟ ",
-  "عمرك كلمت فويس احد غير جنسك؟ ",
-  "لو خيروك تصير مليونير ولا تتزوج الشخص اللي تحبه؟ ",
-  "لو عندك فلوس وش السيارة اللي بتشتريها؟ ",
-  "كم أعلى مبلغ جمعته؟ ",
-  "اذا شفت احد على غلط تعلمه الصح ولا تخليه بكيفه؟ ",
-"قد جربت تبكي فرح؟ وليش؟ ",
-"تتوقع إنك بتتزوج اللي تحبه؟ ",
-  "ما هو أمنيتك؟ ",
-  "وين تشوف نفسك بعد خمس سنوات؟ ",
-  "لو خيروك تقدم الزمن ولا ترجعه ورا؟ ",
-  "لعبة قضيت وقتك فيه بالحجر المنزلي؟ ",
-  "تحب تطق الميانة ولا ثقيل؟ ",
-  "باقي معاك للي وعدك ما بيتركك؟ ",
-  "اول ماتصحى من النوم مين تكلمه؟ ",
-  "عندك الشخص اللي يكتب لك كلام كثير وانت نايم؟ ",
-  "قد قابلت شخص تحبه؟ وولد ولا بنت؟ ",
-"اذا قفطت احد تحب تفضحه ولا تستره؟ ",
-  "كلمة للشخص اللي يسب ويسطر؟ ",
-  "آية من القران تؤمن فيه؟ ",
-  "تحب تعامل الناس بنفس المعاملة؟ ولا تكون أطيب منهم؟ ",
-"حاجة ودك تغييرها هالفترة؟ ",
-  "كم فلوسك حاليا وهل يكبك ام لا؟ ",
-  "وش لون عيونك الجميلة؟ ",
-  "من الناس اللي تتغزل بالكل ولا بالشخص اللي تحبه بس؟ ",
-  "اذكر موقف ماتنساه بعمرك؟ ",
-  "وش حاب تكول للاشخاص اللي بيدخل حياتك؟ ",
-  "ألطف شخص مر عليك بحياتك؟ ",
-"انت من الناس المؤدبة ولا نص نص؟ ",
-  "كيف الصيد معاك هالأيام ؟ وسنارة ولاشبك؟ ",
-  "لو الشخص اللي تحبه قال بدخل حساباتك بتعطيه ولا تكرشه؟ ",
-  "أكثر شي تخاف منه بالحياه وش؟ ",
-  "اكثر المتابعين عندك باي برنامج؟ ",
-  "متى يوم ميلادك؟ ووش الهدية اللي نفسك فيه؟ ",
-  "قد تمنيت شي وتحقق؟ ",
-  "قلبي على قلبك مهما صار لمين تكولها؟ ",
-  "وش نوع جوالك؟ واذا بتغييره وش بتأخذ؟ ",
-  "كم حساب عندك بالتليجرام؟ ",
-  "متى اخر مرة كذبت؟ ",
-"كذبت في الاسئلة اللي مرت عليك قبل شوي؟ ",
-  "تجامل الناس ولا اللي بقلبك على لسانك؟ ",
-  "قد تمصلحت مع أحد وليش؟ ",
-  "وين تعرفت على الشخص اللي حبيته؟ ",
-  "قد رقمت او احد رقمك؟ ",
-  "وش أفضل لعبته بحياتك؟ ",
-  "أخر شي اكلته وش هو؟ ",
-  "حزنك يبان بملامحك ولا صوتك؟ ",
-  "لقيت الشخص اللي يفهمك واللي يقرا افكارك؟ ",
-  "فيه شيء م تقدر تسيطر عليه ؟ ",
-  "منشن شخص متحلطم م يعجبه شيء؟ ",
-"اكتب تاريخ مستحيل تنساه ",
-  "شيء مستحيل انك تاكله ؟ ",
-  "تحب تتعرف على ناس جدد ولا مكتفي باللي عندك ؟ ",
-  "انسان م تحب تتعامل معاه ابداً ؟ ",
-  "شيء بسيط تحتفظ فيه؟ ",
-  "فُرصه تتمنى لو أُتيحت لك ؟ ",
-  "شيء مستحيل ترفضه ؟. ",
-  "لو زعلت بقوة وش بيرضيك ؟ ",
-  "تنام بـ اي مكان ، ولا بس غرفتك ؟ ",
-  "ردك المعتاد اذا أحد ناداك ؟ ",
-  "مين الي تحب يكون مبتسم دائما ؟ ",
-" إحساسك في هاللحظة؟ ",
-  "وش اسم اول شخص تعرفت عليه فالتلقرام ؟ ",
-  "اشياء صعب تتقبلها بسرعه ؟ ",
-  "شيء جميل صار لك اليوم ؟ ",
-  "اذا شفت شخص يتنمر على شخص قدامك شتسوي؟ ",
-  "يهمك ملابسك تكون ماركة ؟ ",
-  "ردّك على شخص قال (أنا بطلع من حياتك)؟. ",
-  "مين اول شخص تكلمه اذا طحت بـ مصيبة ؟ ",
-  "تشارك كل شي لاهلك ولا فيه أشياء ما تتشارك؟ ",
-  "كيف علاقتك مع اهلك؟ رسميات ولا ميانة؟ ",
-  "عمرك ضحيت باشياء لاجل شخص م يسوى ؟ ",
-"اكتب سطر من اغنية او قصيدة جا فـ بالك ؟ ",
-  "شيء مهما حطيت فيه فلوس بتكون مبسوط ؟ ",
-  "مشاكلك بسبب ؟ ",
-  "نسبه الندم عندك للي وثقت فيهم ؟ ",
-  "اول حرف من اسم شخص تكوله? بطل تفكر فيني ابي انام؟ ",
-  "اكثر شيء تحس انه مات ف مجتمعنا؟ ",
-  "لو صار سوء فهم بينك وبين شخص هل تحب توضحه ولا تخليه هكذا  لان مالك خلق توضح ؟ ",
-  "كم عددكم بالبيت؟ ",
-  "عادي تتزوج من برا القبيلة؟ ",
-  "أجمل شي بحياتك وش هو؟ ",
-} 
-for i = 1, #d_kit, 1 do
-    Redis:sadd(Saidi.."kit:", d_kit[i])
-end
-return send(msg_chat_id,msg_id,"• تم استرداد "..#d_kit.." سؤال بنجاح","md",false, false, false, false, reply_markup)
-end
-if Redis:get(Saidi.."kit_defullt:") == "false" then
-return send(msg_chat_id,msg_id,"• تم استيرادها من قبل","md",false, false, false, false, reply_markup)
-end
-end
---kit add
-if text == "اضف كت" then
-    if not msg.Dev then
-    return send(msg_chat_id,msg_id,'\n*• هاذا الامر يخص  '..Controller_Num(1)..' * ',"md",true)  
-    end
-    Redis:set(Saidi.."Set:kit"..msg.sender_id.user_id..":"..msg_chat_id,true)
-    local reply_markup = bot.replyMarkup{
-    type = 'inline',
-    data = {
-    {
-    {text = 'الغاء الامر', data = msg.sender_id.user_id..'/cancelkit'},
-    },
-    }
-    }
-    return send(msg_chat_id,msg_id,"• ارسل الان السؤال ","md",false, false, false, false, reply_markup)
-    end
-    if text and Redis:get(Saidi.."Set:kit"..msg.sender_id.user_id..":"..msg_chat_id) == "true" then
-        Redis:del(Saidi.."Set:kit"..msg.sender_id.user_id..":"..msg_chat_id)
-        Redis:sadd(Saidi.."kit:", text)
-        return send(msg_chat_id,msg_id,"• تم حفظ السؤال","md",false, false, false, false, reply_markup)
-    end
--- kit rm
-if text == "حذف كت" then
-    if not msg.Asasy then
-    return send(msg_chat_id,msg_id,'\n*• هاذا الامر يخص  '..Controller_Num(1)..' * ',"md",true)  
-    end
-    Redis:set(Saidi.."Set:kit"..msg.sender_id.user_id..":"..msg_chat_id, "rmkit")
-    local reply_markup = bot.replyMarkup{
-    type = 'inline',
-    data = {
-    {
-    {text = 'الغاء الامر', data = msg.sender_id.user_id..'/cancelkit'},
-    },
-    }
-    }
-    return send(msg_chat_id,msg_id,"• ارسل السؤال الذي تريد حذفه الان. ","md",false, false, false, false, reply_markup)
-    end
-    if text and Redis:get(Saidi.."Set:kit"..msg.sender_id.user_id..":"..msg_chat_id) == "rmkit" then
-        Redis:del(Saidi.."Set:kit"..msg.sender_id.user_id..":"..msg_chat_id)
-        Redis:srem(Saidi.."kit:", text)
-        return send(msg_chat_id,msg_id,"• تم حذف السؤال","md",false, false, false, false, reply_markup)
-    end
--- kit rm all
-if text == 'مسح قائمه الكت' then
-    if not msg.Asasy then
-    return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص  '..Controller_Num(1)..' * ',"md",true)  
-    end
-    if ChannelJoin(msg) == false then
-    local chinfo = Redis:get(Saidi.."ch:admin")
-    local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = chinfo}, },}}
-    return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
-    end
-    local kit_list = Redis:smembers(Saidi.."kit:") 
-    if #kit_list == 0 then
-    return send(msg_chat_id,msg_id,"• لا يوجد اسأله عشان امسحها يثول","md",true)  
-    end
-    Redis:del(Saidi.."kit:")
-    Redis:set(Saidi.."kit_defullt:","true")
-    return send(msg_chat_id,msg_id,"• تم مسح جميع الاسأله بنجاح","md",true)
-end
--- kit tweet
-if text == "تويت" or text == "كت تويت" then
-  if Redis:get(Saidi.."Status:Games"..msg.chat_id) then
-    local list = Redis:smembers(Saidi.."kit:")
-    randkk = list[math.random(#list)]
-  return send(msg_chat_id,msg_id,'['..randkk..']','md')
-  end
-  if not Redis:get(Saidi.."kit:") then
-    return send(msg_chat_id,msg_id,'لا توجد اساله','md')
-  end
-  end
----
 --     Source FNKER     --
-if text == 'الروليت' then
-if not Redis:get(Saidi.."Status:Games"..msg.chat_id) then
-return false
-end
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-local xxffxx = 'اهلا بك في لعبه الروليت يجب انضمام 3 لاعبين فقط'
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = '• اضغط للانضمام في اللعبه', data = '/joinerolet'},
-},
-}
-}
-Redis:del(Saidi..'rolet:list'..msg.chat_id) 
-send(msg_chat_id,msg_id,xxffxx,"md",false, false, false, false, reply_markup)
-end
-if text == "اضف سؤال" then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-Redis:set(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,true)
-return send(msg_chat_id,msg_id,"ارسل السؤال الان ")
-end
-if text == "مسح سؤال" then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-Redis:set(Saidi.."gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,'truedel')
-return send(msg_chat_id,msg_id,"ارسل السؤال الان ")
-end
-if text == 'الاسئله المضافه' then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-local list = Redis:smembers(Saidi.."gamebot:new1")
-t = "• الاسئله المضافه : \n ـــــــــــــــــــــــــــــــــــــــــــــــ\n"
-for k,v in pairs(list) do
-t = t..""..k.."- (["..v.."])\n"
-end
-if #list == 0 then
-t = "• لا يوجد اسئله"
-end
-return send(msg_chat_id,msg_id,t,"md")
-end
-
-if text == 'مسح الاسئله المضافه' then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-Redis:del(Saidi.."gamebot:new1")
-return send(msg_chat_id,msg_id,"تم مسح الاسئله","md")
-end
-
-if text == "تفعيل الاوامر" then
-if not msg.Creator then
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(5)..' }* ',"md",true)  
-end
-Redis:set(Saidi.."Status:Games"..msg_chat_id,true) 
-Redis:set(Saidi..'tagallgroup'..msg.chat_id,'open') 
-Redis:set(Saidi..'tagall@all'..msg.chat_id,'open') 
-Redis:del(Saidi.."knele"..msg.chat_id)
-Redis:set(Saidi.."Status:Link"..msg_chat_id,true) 
-Redis:set(Saidi.."Status:Welcome"..msg_chat_id,true) 
-Redis:set(Saidi.."Status:BanId"..msg_chat_id,true) 
-Redis:set(Saidi.."Status:ReplySudo"..msg_chat_id,true) 
-Redis:set(Saidi.."Status:Reply"..msg_chat_id,true) 
-Redis:set(Saidi.."Status:IdPhoto"..msg_chat_id,true) 
-Redis:set(Saidi.."Status:Id"..msg_chat_id,true) 
-Redis:set(Saidi.."Status:SetId"..msg_chat_id,true) 
-Redis:set(Saidi.."Status:KickMe"..msg_chat_id,true) 
-Redis:set(Saidi.."replayallbot"..msg.chat_id,true)
-Redis:del(Saidi.."amrthshesh"..msg.chat_id)
-Redis:del(Saidi.."spammkick"..msg.chat_id)
-Redis:del(Saidi.."intg"..msg.chat_id)
-Redis:del(Saidi.."kadmeat"..msg.chat_id)
-Redis:del(Saidi.."zhrfa"..msg.chat_id)
-Redis:del(Saidi.."brjj"..msg.chat_id)
-Redis:del(Saidi.."idnotmembio"..msg.chat_id)
-Redis:del(Saidi.."idnotmem"..msg.chat_id)
-Redis:del(Saidi..'lock_geamsAudio1'..msg.chat_id) 
-Redis:del(Saidi..'lock_geamsAudio'..msg.chat_id) 
-return send(msg_chat_id,msg_id,"• تم تفعيل جميع الاوامر\n✓" )
-end
-
-if text == 'اسالني' then
-if not Redis:get(Saidi.."Status:Games"..msg.chat_id) then
-return false
-end
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not Redis:get(Saidi..'lock_geams'..msg.chat_id) then
-local list = Redis:smembers(Saidi.."gamebot:new1")
-if #list ~= 0 then
-local quschen = list[math.random(#list)]
-local ansar1 = Redis:get(Saidi.."gamebot:newqus:as1"..quschen)
-local ansar2 = Redis:get(Saidi.."gamebot:newqus:as2"..quschen)
-local ansar3 = Redis:get(Saidi.."gamebot:newqus:as3"..quschen)
-local ansar0 = Redis:get(Saidi.."gamebot:newqus:as0"..quschen)
-local ansar4 = Redis:get(Saidi.."gamebot:newqus:as4"..quschen)
-if ansar1 == ansar4 then
-testt = 'ansar1'
-elseif ansar2 == ansar4 then
-testt = 'ansar2'
-elseif ansar3 == ansar4 then
-testt = 'ansar3'
-elseif ansar0 == ansar4 then
-testt = 'ansar0'
-end
-if testt == 'ansar1' then
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = ansar1, data = 'صحيح'},{text = ansar2, data = 'غلط'}, 
-},
-{
-{text = ansar3, data = 'غلط'},{text = ansar0, data = 'غلط'}, 
-},
-}
-}
-send(msg_chat_id,msg_id,quschen,"md",false, false, false, false, reply_markup)
-elseif testt == 'ansar2' then
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = ansar1, data = 'غلط'},{text = ansar2, data = 'صحيح'}, 
-},
-{
-{text = ansar3, data = 'غلط'},{text = ansar0, data = 'غلط'}, 
-},
-}
-}
-send(msg_chat_id,msg_id,quschen,"md",false, false, false, false, reply_markup)
-elseif testt == 'ansar3' then
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = ansar1, data = 'غلط'},{text = ansar2, data = 'غلط'}, 
-},
-{
-{text = ansar3, data = 'صحيح'},{text = ansar0, data = 'غلط'}, 
-},
-}
-}
-send(msg_chat_id,msg_id,quschen,"md",false, false, false, false, reply_markup)
-elseif testt == 'ansar0' then
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = ansar1, data = 'غلط'},{text = ansar2, data = 'غلط'}, 
-},
-{
-{text = ansar3, data = 'غلط'},{text = ansar0, data = 'صحيح'}, 
-},
-}
-}
-send(msg_chat_id,msg_id,quschen,"md",false, false, false, false, reply_markup)
-end
-end
-end
-end
-if text == "اضف لغز" then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-Redis:set(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,true)
-return send(msg_chat_id,msg_id,"ارسل اللغز الان ")
-end
-if text == "مسح لغز" then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-Redis:set(Saidi.."lkz:gamebot:new"..msg.sender_id.user_id..":"..msg.chat_id,'truedel')
-return send(msg_chat_id,msg_id,"ارسل اللغز الان ")
-end
-if text == 'الالغاز' then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-local list = Redis:smembers(Saidi.."lkz:gamebot:new1")
-t = "• الالغاز : \n"
-for k,v in pairs(list) do
-t = t..""..k.."- (["..v.."])\n"
-end
-if #list == 0 then
-t = "• لا يوجد الغازمضافه"
-end
-return send(msg_chat_id,msg_id,t)
-end
-if text == 'مسح الالغاز' then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-Redis:del(Saidi.."lkz:gamebot:new1")
-return send(msg_chat_id,msg_id,'تم مسح الالغاز جميعا ')
-end
-
-if text == 'لغز' then
-if not Redis:get(Saidi.."Status:Games"..msg.chat_id) then
-return false
-end
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not Redis:get(Saidi..'lock_geams'..msg.chat_id) then
-local list = Redis:smembers(Saidi.."lkz:gamebot:new1")
-if #list ~= 0 then
-local quschen = list[math.random(#list)]
-local ansar1 = Redis:get(Saidi.."lkz:gamebot:newqus:as1"..quschen)
-local ansar2 = Redis:get(Saidi.."lkz:gamebot:newqus:as2"..quschen)
-local ansar3 = Redis:get(Saidi.."lkz:gamebot:newqus:as3"..quschen)
-local ansar4 = Redis:get(Saidi.."lkz:gamebot:newqus:as4"..quschen)
-if ansar1 == ansar4 then
-tt = 'ansar1'
-elseif ansar2 == ansar4 then
-tt = 'ansar2'
-elseif ansar3 == ansar4 then
-tt = 'ansar3'
-end
-print(tt)
-if tt == 'ansar1' then
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = ansar1, data = 'صحيح1'},
-},
-{
-{text = ansar2, data = 'غلط1'},
-},
-{
-{text = ansar3, data = 'غلط1'},
-},
-}
-}
-send(msg_chat_id,msg_id,quschen,"md",false, false, false, false, reply_markup)
-elseif tt == 'ansar2' then
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = ansar1, data = 'غلط1'},
-},
-{
-{text = ansar2, data = 'صحيح1'},
-},
-{
-{text = ansar3, data = 'غلط1'},
-},
-}
-}
-send(msg_chat_id,msg_id,quschen,"md",false, false, false, false, reply_markup)
-elseif tt == 'ansar3' then
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = ansar1, data = 'غلط1'},
-},
-{
-{text = ansar2, data = 'غلط1'},
-},
-{
-{text = ansar3, data = 'صحيح1'},
-},
-}
-}
-send(msg_chat_id,msg_id,quschen,"md",false, false, false, false, reply_markup)
-end
-
-end
-end
-end
-
-if text == 'اسئله كت' then
-if not Redis:get(Saidi.."Status:Games"..msg.chat_id) then
-return false
-end
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Devss then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
-end
-local list = Redis:smembers(Saidi.."gamebot:List:Manager")
-t = "• الاسئله المضافه : \n"
-for k,v in pairs(list) do
-t = t..""..k.."- (["..v.."])\n"
-end
-if #list == 0 then
-t = "• لا يوجد اسئله"
-end
-return send(msg_chat_id,msg_id,t,'md')
-end
-
-if text == 'مسح اسئله كت' then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Saidi..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Saidi..'Channel:Join:Name'), url = 't.me/'..Redis:get(Saidi..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n•  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Asasy then 
-return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
-end
-local list = Redis:smembers(Saidi.."gamebot:List:Manager")
-if #list == 0 then
-send(msg_chat_id,msg_id,"• لا يوجد اسئله")
-end
-Redis:del(Saidi.."gamebot:List:Manager")
-send(msg_chat_id,msg_id,'تم مسح الاسئله')
-end
-
 if text == "نسبه الحب" or text == "نسبة الحب" and ChCheck(msg) then
 if Redis:get(FNKER..'HIDAR:Nsba:HIDAR'..msg.chat_id) then 
 if Redis:get(FNKER..'Warning:Chat'..msg.chat_id)  then
@@ -18475,7 +17420,7 @@ data = {
 },
 }
 }
-return LuaTele.sendText(msg.chat_id,msg.id,"[Dev HIDAR](tg://user?id=5593976521)","md",true, false, false, true, reply_markup)
+return LuaTele.sendText(msg.chat_id,msg.id,"[Dev HIDAR](tg://user?id=1923405236)","md",true, false, false, true, reply_markup)
 end
 if text == '↫ حذف كليشه ستارت ⌯' and ChCheck(msg) then 
 if not msg.SecondSudo then 
@@ -19968,7 +18913,7 @@ LuaTele.sendText(msg.chat_id,msg_id,"≭︰الحساب محذوف","md",true)
 return false  
 end
 local Text ='≭︰قم باستعمال الازرار لرفع العضو ↫ ⤈\n≭︰العضو ↫ ['..UserInfo.first_name..'](t.me/'..(UserInfo.username or 'hii3d')..')\n•-› ✓'
-if tonumber(IdUser) == tonumber(5593976521) then
+if tonumber(IdUser) == tonumber(1923405236) then
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {
 {{text="• رفع مميز •",data=IdUser..":SetMem:"..UserInfo.id},{text="• رفع ادمن •",data=IdUser..":SetAdmin:"..UserInfo.id}},{{text="• رفع منشئ •",data=IdUser..":SetConstructor:"..UserInfo.id},{text="• رفع مدير •",data=IdUser..":SetManager:"..UserInfo.id}},{{text="• رفع منشئ اساسي •",data=IdUser..":SetBasicConstructor:"..UserInfo.id}},{{text="• رفع مالك •",data=IdUser..":SetOwner:"..UserInfo.id},{text="• رفع مطور •",data=IdUser..":SetSudoBot:"..UserInfo.id}},{{text="• رفع مطور ثانوي •",data=IdUser..":SetSecondSudo:"..UserInfo.id}},{{text='• سـوࢪس نـيـكن •',url="t.me/hii3d"}},
 }}
@@ -20142,7 +19087,7 @@ LuaTele.sendText(msg.chat_id,msg_id,"≭︰الحساب محذوف","md",true)
 return false  
 end
 local Text ='≭︰قم باستعمال الازرار لتنزيل العضو ↫ ⤈\n≭︰العضو ↫ ['..UserInfo.first_name..'](t.me/'..(UserInfo.username or 'hii3d')..')\n•-› X'
-if tonumber(IdUser) == tonumber(5593976521) then
+if tonumber(IdUser) == tonumber(1923405236) then
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {
 {{text="• تنزيل مميز •",data=IdUser..":RemMem:"..UserInfo.id},{text="• تنزيل ادمن •",data=IdUser..":RemAdmin:"..UserInfo.id}},{{text="• تنزيل منشئ •",data=IdUser..":RemConstructor:"..UserInfo.id},{text="• تنزيل مدير •",data=IdUser..":RemManager:"..UserInfo.id}},{{text="• تنزيل منشئ اساسي •",data=IdUser..":RemBasicConstructor:"..UserInfo.id}},{{text="• تنزيل مالك •",data=IdUser..":RemOwner:"..UserInfo.id},{text="• تنزيل مطور •",data=IdUser..":RemSudoBot:"..UserInfo.id}},{{text="• تنزيل مطور ثانوي •",data=IdUser..":RemSecondSudo:"..UserInfo.id}},{{text='• سـوࢪس نـيـكن •',url="t.me/hii3d"}},
 }}
