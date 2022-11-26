@@ -8,11 +8,14 @@ json = require('libs/json')
 Redis = require('libs/redis').connect('127.0.0.1', 6379)
 http  = require("socket.http")
 https   = require("ssl.https")
-SshId = io.popen("echo $SSH_CLIENT ︙ awk '{ print $1}'"):read('*a')
-Merotele = require 'MeroTele'
+local Methods = io.open("./luatele.lua","r")
+if Methods then
+URL.tdlua_CallBack()
+end
+luatele = require('luatele')
 local FileInformation = io.open("./Information.lua","r")
 if not FileInformation then
-if not Redis:get(SshId.."Info:Redis:Token") then
+if not Redis:get(Server_Done.."set:Token") then
 io.write('\27[1;31mارسل لي توكن البوت الان \nSend Me a Bot Token Now ↡\n\27[0;39;49m')
 local TokenBot = io.read()
 if TokenBot and TokenBot:match('(%d+):(.*)') then
