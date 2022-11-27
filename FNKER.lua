@@ -5,12 +5,13 @@ json = require('libs/json')
 Redis = require('libs/redis').connect('127.0.0.1', 6379)
 http  = require("socket.http")
 https   = require("ssl.https")
-SshId = io.popen("echo $SSH_CLIENT ︙ awk '{ print $1}'"):read('*a')
-Fx = require './td'
-local FNKERtt =  require('tdlua') 
-local client = FNKERtt()
-local tdf = Fx.xnxx()
-local FileInformation = io.open("./Information.lua","r") 
+local Methods = io.open("./alah.lua","r")
+if Methods then
+URL.tdlua_CallBack()
+end
+SshId = io.popen("echo $SSH_CLIENT ┊ awk '{ print $1}'"):read('*a')
+luatele = require 'luatele'
+local FileInformation = io.open("./Information.lua","r")
 if not FileInformation then
 if not Redis:get(SshId.."Info:Redis:Token") then
 io.write('\27[1;31mارسل لي توكن البوت الان \nSend Me a Bot Token Now ↡\n\27[0;39;49m')
@@ -30,7 +31,7 @@ end
 else
 print('\27[1;34mلم يتم حفظ التوكن جرب مره اخره \nToken not saved, try again')
 end 
-os.execute('lua5.2 FNKER.lua')
+os.execute('lua ZELZAL.lua')
 end
 if not Redis:get(SshId.."Info:Redis:User") then
 io.write('\27[1;31mارسل معرف المطور الاساسي الان \nDeveloper UserName saved ↡\n\27[0;39;49m')
@@ -41,7 +42,7 @@ Redis:set(SshId.."Info:Redis:User",UserSudo)
 else
 print('\n\27[1;34mلم يتم حفظ معرف المطور الاساسي \nDeveloper UserName not saved\n')
 end 
-os.execute('lua5.2 FNKER.lua')
+os.execute('lua ZELZAL.lua')
 end
 if not Redis:get(SshId.."Info:Redis:User:ID") then
 io.write('\27[1;31mارسل ايدي المطور الاساسي الان \nDeveloper ID saved ↡\n\27[0;39;49m')
@@ -51,7 +52,7 @@ io.write('\n\27[1;34mتم حفظ ايدي المطور \nDeveloper ID saved \n\n
 Redis:set(SshId.."Info:Redis:User:ID",UserId)
 else
 print('\n\27[1;34mلم يتم حفظ ايدي المطور الاساسي \nDeveloper ID not saved\n')
-end 
+end
 os.execute('lua5.2 FNKER.lua')
 end
 local Informationlua = io.open("Information.lua", 'w')
