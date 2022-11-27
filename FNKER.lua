@@ -9,11 +9,10 @@ local Methods = io.open("./luatele.lua","r")
 if Methods then
 URL.tdlua_CallBack()
 end
-SshId = io.popen("echo $SSH_CLIENT ︙ awk '{ print $1}'"):read('*a')
-luatele = require 'luatele'
+luatele = require('luatele')
 local FileInformation = io.open("./Information.lua","r")
 if not FileInformation then
-if not Redis:get(SshId.."Info:Redis:Token") then
+if not Redis:get(Server_Done.."set:Token") then
 io.write('\27[1;31mارسل لي توكن البوت الان \nSend Me a Bot Token Now ↡\n\27[0;39;49m')
 local TokenBot = io.read()
 if TokenBot and TokenBot:match('(%d+):(.*)') then
@@ -25,23 +24,23 @@ else
 io.write('\27[1;34mتم حفظ التوكن بنجاح \nThe token been saved successfully \n\27[0;39;49m')
 TheTokenBot = TokenBot:match("(%d+)")
 os.execute('sudo rm -fr .CallBack-Bot/'..TheTokenBot)
-Redis:set(SshId.."Info:Redis:Token",TokenBot)
-Redis:set(SshId.."Info:Redis:Token:User",Json_Info.result.username)
+Redis:setex(Server_Done.."set:Token",300,TokenBot)
+Redis:setex(Server_Done.."set:userbot",300,Json_Info.result.username)
 end 
 else
 print('\27[1;34mلم يتم حفظ التوكن جرب مره اخره \nToken not saved, try again')
 end 
 os.execute('lua FNKER.lua')
 end
-if not Redis:get(SshId.."Info:Redis:User") then
+if not Redis:get(Server_Done.."set:user") then
 io.write('\27[1;31mارسل معرف المطور الاساسي الان \nDeveloper UserName saved ↡\n\27[0;39;49m')
 local UserSudo = io.read():gsub('@','')
 if UserSudo ~= '' then
 io.write('\n\27[1;34mتم حفظ معرف المطور \nDeveloper UserName saved \n\n\27[0;39;49m')
-Redis:set(SshId.."Info:Redis:User",UserSudo)
+Redis:setex(Server_Done.."set:user",300,UserSudo)
 else
 print('\n\27[1;34mلم يتم حفظ معرف المطور الاساسي \nDeveloper UserName not saved\n')
-end 
+end
 os.execute('lua FNKER.lua')
 end
 if not Redis:get(SshId.."Info:Redis:User:ID") then
