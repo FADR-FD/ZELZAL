@@ -11582,8 +11582,6 @@ local BotName = {
     'اخرس',
     'هطف انت ؟',
     'اذا ناديتني ب اسمي راح ارد',
-     'مو فله ترا'
-    '!!!!',
     'اسمي '..NamesBot..' ياخي',
 }
 return bot.sendPhoto(msg.chat_id, msg.id, photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id,BotName[math.random(#BotName)], "md", true, nil, nil, nil, nil, nil, nil, nil, nil, reply_markup )
@@ -11600,8 +11598,6 @@ local BotName = {
   'اخرس',
   'هطف انت ؟',
   'اذا ناديتني ب اسمي راح ارد',
-   'مو فله ترا'
-  '!!!!',
   'اسمي '..NamesBot..' ياخي',
 }
 return send(msg_chat_id,msg_id,BotName[math.random(#BotName)],"md") 
@@ -11619,8 +11615,6 @@ local BotName = {
   'اخرس',
   'هطف انت ؟',
   'اذا ناديتني ب اسمي راح ارد',
-   'مو فله ترا'
-  '!!!!',
   'اسمي '..NamesBot..' ياخي',
 }
 return send(msg_chat_id,msg_id,BotName[math.random(#BotName)],"md") 
