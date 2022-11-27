@@ -15051,8 +15051,13 @@ name = string.gsub(name,"جسر","ر ج س")
 return LuaTele.sendText(msg.chat_id,msg.id,"✯︰اسرع واحد يرتبها ~ {"..name.."}","md",true)  
 end
 end
-if text == "حروف" or text == "حرف" or text == "الحروف" then
-if Redis:get(FNKER.."FNKER:Status:Games"..msg.chat_id) then
+if text == "حرف" and ChCheck(msg) or text == "حروف" and ChCheck(msg) or text == "كت تويت" and ChCheck(msg) then
+if not Redis:get(FNKER.."Status:Games"..msg.chat_id) then
+local UserInfo = LuaTele.getUser(msg.sender.user_id)
+local FNKER = {"حبيبي","؏َـمࢪي","عزيزي","يڪلبي","روحي","حب","حــچي","ضلعي"} 
+local FNKER = FNKER[math.random(#FNKER)]
+LuaTele.sendText(msg.chat_id,msg.id,"✯︰عذراَ "..FNKER.." ↬ ["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")\n✯︰الالعاب معطله من قبل الادمن\n✯-› X","md",true)
+else
 local texting = {" جماد بحرف ⇜ ر  ", 
 " مدينة بحرف ⇜ ع  ",
 " حيوان ونبات بحرف ⇜ خ  ", 
