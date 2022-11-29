@@ -20475,13 +20475,8 @@ LuaTele.sendText(Info_User,0,text,"md",true)
 end 
 LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Info_User,'⛧ تم ارسال رسالتك اليه ').Reply,"md",true)  
 end
-end
-end 
 end --UserBot
 end -- File_Bot_Run
-
-
-
 function CallBackLua(data) 
 if data and data.luatele and data.luatele == "updateNewInlineQuery" then
 local Text = data.query 
