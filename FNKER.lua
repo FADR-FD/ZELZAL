@@ -25725,10 +25725,7 @@ end
 end
 
 
-Redis:sadd(FNKER.."eza3a",Token.."&"..FNKER)
-Redis:set("@"..UserBot,FNKER.."&".."@"..UserBot.."$@"..UserSudo.."+"..Token)
 luatele.run(CallBackLua)
- 
 
 
 
