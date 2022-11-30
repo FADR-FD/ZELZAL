@@ -3367,76 +3367,6 @@ Redis:srem(FNKER.."FNKER:ChekBotAdd",msg_chat_id)
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*۩┊المجموعه : {*['..Get_Chat.title..']('..Info_Chats.invite_link.invite_link..')*}\n۩┊تم تعطيلها بنجاح *','md',true)
 end
 end
-
-
-if text and text:match('^تحكم @(%S+)$') then
-local UserName = text:match('^تحكم @(%S+)$') 
-if not msg.Admin then
-return send(msg_chat_id,msg_id,'\n* ✧ عذرآ الامر يخص〘 '..Controller_Num(7)..' 〙*',"md",true)  
-end
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(FNKER..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(FNKER..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n ✧ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(FNKER..'Channel:Join:Name'), url = 't.me/'..Redis:get(FNKER..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n ✧ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-local UserId_Info = bot.searchPublicChat(UserName)
-if not UserId_Info.id then
-return bot.sendText(msg_chat_id,msg_id,"\n ✧ عذرأ لا يوجد حساب بهذا المعرف ","md",true)  
-end
-if UserId_Info.type.is_channel == true then
-return bot.sendText(msg_chat_id,msg_id,"\n ✧ عذرأ لا تستطيع استخدام معرف قناة او قروب ","md",true)  
-end
-if UserName and UserName:match('(%S+)[Bb][Oo][Tt]') then
-return bot.sendText(msg_chat_id,msg_id,"\n ✧ عذرأ لا تستطيع استخدام معرف البوت ","md",true)  
-end
-local reply_markup = bot.replyMarkup{type = 'inline',data = {
-{
-{text = '• تحكم الاشرف • ', data = msg.sender_id.user_id..'/groupNumseteng//'..UserId_Info.id},
-},
-{
-{text = '• تحكم الرتبه • ', data = msg.sender_id.user_id..'/rankup//'..UserId_Info.id},
-},
-{
-{text = '• تحكم الاذعاج • ', data = msg.sender_id.user_id..'/sting//'..UserId_Info.id},
-},
-}
-}
-return bot.sendText(msg.chat_id,msg.id,'*\n✧ الـيـك قـائـمـة الـتـحـكم عـلـي الـعـضـو*',"md",false, false, false, false, reply_markup)
-end
-
-
-if text == 'تحكم' and msg.reply_to_message_id ~= 0 then
-if ChannelJoinch(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(FNKER..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(FNKER..'Chat:Channel:Join'..msg.chat_id)}, },}}
-return send(msg.chat_id,msg.id,'*\n ✧ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if ChannelJoin(msg) == false then
-local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(FNKER..'Channel:Join:Name'), url = 't.me/'..Redis:get(FNKER..'Channel:Join')}, },}}
-return send(msg.chat_id,msg.id,'*\n ✧ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-local Message_Reply = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
-if UserInfo and UserInfo.type and UserInfo.type.FNKERbots == "userTypeBot" then
-return bot.sendText(msg_chat_id,msg_id,"\n✧ عذرأ لا تستطيع استخدام الامر على البوت ","md",true)  
-end
-local reply_markup = bot.replyMarkup{type = 'inline',data = {
-{
-{text = '• تحكم الاشرف • ', data = msg.sender_id.user_id..'/groupNumseteng//'..Message_Reply.sender.user_id}, 
-},
-{
-{text = '• تحكم الرتبه • ', data = msg.sender_id.user_id..'/rankup//'..Message_Reply.sender.user_id}, 
-},
-{
-{text = '• تحكم الاذعاج • ', data = msg.sender_id.user_id..'/sting//'..Message_Reply.sender.user_id}, 
-},
-}
-}
-return bot.sendText(msg.chat_id,msg.id,'*\n✧ الـيـك قـائـمـة الـتـحـكم عـلـي الـعـضـو*',"md",false, false, false, false, reply_markup)
-end
-
-
 local InfoUser = LuaTele.getUserFullInfo(msg.sender.user_id)
 local UserInfo = LuaTele.getUser(msg.sender.user_id)
 local photo = LuaTele.getUserProfilePhotos(msg.sender.user_id)
@@ -6898,7 +6828,7 @@ local Info_Members = Redis:smembers(FNKER.."FNKER:Mistinguished:Group"..msg_chat
 if #Info_Members == 0 then
 return LuaTele.sendText(msg_chat_id,msg_id,"*۩┊لا توجـد مميـزات حاليـاً*","md",true)  
 end
-ListMembers = '\n*۩┊قائمـه المميزات  \nٴ»»——- ★ 𝒔𝒐𝒖𝒓𝒄𝒆 𝒄𝒂𝒓𝒍𝒐𝒔 ★ ——-««*\n'
+ListMembers = '\n*۩┊قائمـه المميزات  \nٴ»»——- ★ 𝒔𝒐??𝒓𝒄𝒆 𝒄𝒂𝒓𝒍𝒐𝒔 ★ ——-««*\n'
 for k, v in pairs(Info_Members) do
 local UserInfo = LuaTele.getUser(v)
 if UserInfo and UserInfo.username and UserInfo.username ~= "" then
