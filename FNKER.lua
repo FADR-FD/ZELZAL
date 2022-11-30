@@ -15197,7 +15197,8 @@ local LLLL = Redis:scard(TheFNKER.."FNKER:Addictive:Group"..msg_chat_id)
 local LLLLL = Redis:scard(TheFNKER.."FNKER:Distinguished:Group"..msg_chat_id)
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = '‹ الاساسيين : '..L..' ›', data = msg.sender.user_id..'/TheBasicsAlsh'},},{{text = '‹ المنشئين : '..LL..' ›', data = msg.sender.user_id..'/OriginatorsAlsh'},{text = '‹ المدراء : '..LLL..' ›', data = msg.sender.user_id..'/ManagersAlsh'},},{{text = '‹ الادمنيه : '..LLLL..' ›', data = msg.sender.user_id..'/AddictiveAlsh'},{text = '‹ المميزين : '..LLLLL..' ›', data = msg.sender.user_id..'/DelDistinguishedAlsh'},},{{text = '‹ TeAmFNKER  ›', url = 't.me/TeAm_FNKER'},},}}
 return LuaTele.sendText(msg_chat_id,msg_id,'✦︙اهلا بك يمكنك عمل تاك لي جميع رتب المجموعه',"md",false, false, false, false, reply_markup)
---
+
+end
 if text == 'حذف حسابي' or text == 'بوت حذف' or text == 'بوت الحذف'  or text == 'رابط الحذف'  then
 photo = "https://t.me/LC6BOT"
 local T =[[
