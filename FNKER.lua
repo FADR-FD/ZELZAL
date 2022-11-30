@@ -155,7 +155,6 @@ end
 end
 LuaTele.sendText(chat,rep,sh,parse,dis, clear, disn, back, markup)
 end
-
 function chat_type(ChatId)
 if ChatId then
 local id = tostring(ChatId)
@@ -391,6 +390,11 @@ data = {
 }
 }
 LuaTele.editMessageText(ChatId,MsgId,"۩┊ صلاحيات الادمن - ", 'md', false, false, reply_markupp)
+end
+function GetAdminsNum(ChatId,UserId)
+local GetMemberStatus = bot.getChatMember(ChatId,UserId).status
+if GetMemberStatus.can_change_info then
+change_info = 1 else change_info = 0
 end
 function GetAdminsNum(ChatId,UserId)
 local GetMemberStatus = LuaTele.getChatMember(ChatId,UserId).status
@@ -707,7 +711,7 @@ end
 function Total_message(Message)  
 local MsgText = ''  
 if tonumber(Message) < 100 then 
-MsgText = 'ما متفاعل عزيزي😐' 
+MsgText = 'تفاعل محلو 😤' 
 elseif tonumber(Message) < 200 then 
 MsgText = 'تفاعلك ضعيف ليش'
 elseif tonumber(Message) < 400 then 
@@ -1591,35 +1595,24 @@ LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'banned',0)
 end
 print('This is Photo delete')
 end
-if msg.content.luatele == "messagePhoto" and not msg.Special then  -- الصور
-local Photo_Group = Redis:get(FNKER.."Lock:Photo"..msg_chat_id)
-if Photo_Group == "del" then
+if msg.content.luatele == "messagePhoto" and not msg.Distinguished then  -- الصور
+local StatusMember = LuaTele.getChatMember(msg_chat_id,msg.sender.user_id).status.luatele
+local Pphoto_Group = Redis:get(FNKER.."FNKER:Llock:Photo"..msg_chat_id)
+if (StatusMember ~= "chatMemberStatusCreator") or (StatusMember ~= "chatMemberStatusAdministrator") then
+if Pphoto_Group == "del" then
 LuaTele.deleteMessages(msg.chat_id,{[1]= msg.id})
-elseif Photo_Group == "ked" then
-LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'restricted',{1,0,0,0,0,0,0,0,0})
-elseif Photo_Group == "ktm" then
-Redis:sadd(FNKER.."SilentGroup:Group"..msg.chat_id,msg.sender.user_id) 
-elseif Photo_Group == "kick" then
-LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'banned',0)
 end
 print('This is Photo delete')
 end
-
-if msg.content.photo and Redis:get(FNKER.."Chat:Photo"..msg_chat_id..":"..msg.sender.user_id) then
-if msg.content.photo.sizes[1].photo.remote.id then
-idPhoto = msg.content.photo.sizes[1].photo.remote.id
-elseif msg.content.photo.sizes[2].photo.remote.id then
-idPhoto = msg.content.photo.sizes[2].photo.remote.id
-elseif msg.content.photo.sizes[3].photo.remote.id then
-idPhoto = msg.content.photo.sizes[3].photo.remote.id
 end
-local ChatPhoto = LuaTele.setChatPhoto(msg_chat_id,idPhoto)
+if msg.content.photo and Redis:get(FNKER.."FNKER:Chat:Photo"..msg_chat_id..":"..msg.sender.user_id) then
+local ChatPhoto = LuaTele.setChatPhoto(msg_chat_id,msg.content.photo.sizes[1].photo.remote.id)
 if (ChatPhoto.luatele == "error") then
-Redis:del(FNKER.."Chat:Photo"..msg_chat_id..":"..msg.sender.user_id)
-return send(msg_chat_id,msg_id,"𖣘 لا استطيع تغيير صوره الجروب لاني لست ادمن او ليست لديه الصلاحيه ","md",true)    
+Redis:del(FNKER.."FNKER:Chat:Photo"..msg_chat_id..":"..msg.sender.user_id)
+return LuaTele.sendText(msg_chat_id,msg_id,"- لا استطيع تغيير صوره المجموعه لاني لست ادمن او ليست لديه الصلاحيه ","md",true)    
 end
-Redis:del(FNKER.."Chat:Photo"..msg_chat_id..":"..msg.sender.user_id)
-return send(msg_chat_id,msg_id,"𖣘 تم تغيير صوره الجروب الجروب الى ","md",true)    
+Redis:del(FNKER.."FNKER:Chat:Photo"..msg_chat_id..":"..msg.sender.user_id)
+return LuaTele.sendText(msg_chat_id,msg_id,"- تم تغيير صوره المجموعه المجموعه الى ","md",true)    
 end
 if (text and text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") 
 or text and text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]/") 
@@ -1630,14 +1623,14 @@ or text and text:match("[Hh][Tt][Tt][Pp][Ss]://")
 or text and text:match("[Hh][Tt][Tt][Pp]://") 
 or text and text:match("[Ww][Ww][Ww].") 
 or text and text:match(".[Cc][Oo][Mm]")) or text and text:match("[Hh][Tt][Tt][Pp][Ss]://") or text and text:match("[Hh][Tt][Tt][Pp]://") or text and text:match("[Ww][Ww][Ww].") or text and text:match(".[Cc][Oo][Mm]") or text and text:match(".[Tt][Kk]") or text and text:match(".[Mm][Ll]") or text and text:match(".[Oo][Rr][Gg]") then 
-local link_Group = Redis:get(FNKER.."Lock:Link"..msg_chat_id)  
-if not msg.Special then
+local link_Group = Redis:get(FNKER.."FNKER:Lock:Link"..msg_chat_id)  
+if not msg.Distinguished or not msg.Mistinguished then
 if link_Group == "del" then
 LuaTele.deleteMessages(msg.chat_id,{[1]= msg.id})
 elseif link_Group == "ked" then
 LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'restricted',{1,0,0,0,0,0,0,0,0})
 elseif link_Group == "ktm" then
-Redis:sadd(FNKER.."SilentGroup:Group"..msg.chat_id,msg.sender.user_id) 
+Redis:sadd(FNKER.."FNKER:SilentGroup:Group"..msg.chat_id,msg.sender.user_id) 
 elseif link_Group == "kick" then
 LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'banned',0)
 end
@@ -1645,29 +1638,31 @@ print('This is link ')
 return false
 end
 end
-if text and text:match("@[%a%d_]+") and not msg.Special then 
-local UserName_Group = Redis:get(FNKER.."Lock:User:Name"..msg_chat_id)
+if text and text:match("@[%a%d_]+") and not msg.Distinguished then 
+local UserName_Group = Redis:get(FNKER.."FNKER:Lock:User:Name"..msg_chat_id)
 if UserName_Group == "del" then
 LuaTele.deleteMessages(msg.chat_id,{[1]= msg.id})
 elseif UserName_Group == "ked" then
 LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'restricted',{1,0,0,0,0,0,0,0,0})
 elseif UserName_Group == "ktm" then
-Redis:sadd(FNKER.."SilentGroup:Group"..msg.chat_id,msg.sender.user_id) 
+Redis:sadd(FNKER.."FNKER:SilentGroup:Group"..msg.chat_id,msg.sender.user_id) 
 elseif UserName_Group == "kick" then
 LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'banned',0)
 end
 print('This is username ')
 end
-if text and text:match("#[%a%d_]+") and not msg.Special then 
-local Hashtak_Group = Redis:get(FNKER.."Lock:hashtak"..msg_chat_id)
+if text and text:match("#[%a%d_]+") and not msg.Distinguished then 
+local Hashtak_Group = Redis:get(FNKER.."FNKER:Lock:hashtak"..msg_chat_id)
 if Hashtak_Group == "del" then
 return LuaTele.deleteMessages(msg.chat_id,{[1]= msg.id})
 elseif Hashtak_Group == "ked" then
 return LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'restricted',{1,0,0,0,0,0,0,0,0})
 elseif Hashtak_Group == "ktm" then
-Redis:sadd(FNKER.."SilentGroup:Group"..msg.chat_id,msg.sender.user_id) 
+Redis:sadd(FNKER.."FNKER:SilentGroup:Group"..msg.chat_id,msg.sender.user_id) 
 elseif Hashtak_Group == "kick" then
 return LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'banned',0)
+end
+print('This is hashtak ')
 end
 if text and text:match("/[%a%d_]+") and not msg.Distinguished then 
 local comd_Group = Redis:get(FNKER.."FNKER:Lock:Cmd"..msg_chat_id)
@@ -2397,13 +2392,27 @@ return LuaTele.sendText(msg_chat_id,msg_id,'۩┊تم حفظ كليشة المط
 end
 if Redis:get(FNKER.."FNKER:Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id) then 
 if text == 'الغاء' then 
-LuaTele.sendText(msg_chat_id,msg_id, "\n*۩┊تم الغاء امر تعين الايدي*","md",true)  
-Redis:del(FNKER.."FNKER:Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id) 
+LuaTele.sendText(msg_chat_id,msg_id, "\n◍ تم الغاء امر تعين الايدي","md",true)  
+Redis:del(itsLotus.."Lotus:Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id) 
 return false  
 end 
-Redis:del(FNKER.."FNKER:Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id) 
-Redis:set(FNKER.."FNKER:Set:Id:Group"..msg.chat_id,text:match("(.*)"))
-LuaTele.sendText(msg_chat_id,msg_id,'*۩┊تم تعين الايدي الجديد*',"md",true)  
+Redis:del(itsLotus.."Lotus:Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id) 
+Redis:set(itsLotus.."Lotus:Set:Id:Group"..msg.chat_id,text:match("(.*)"))
+local reply_markup = LuaTele.replyMarkup{
+type = 'inline',
+data = {
+{
+{text = '- تغيير الايدي', data = msg.sender.user_id..'/chenid'},
+},
+{
+{text = '‹ الغاء الامر ›', data = msg.sender.user_id..'/delamrredis'},
+},
+{
+{text = '‹ Source Lotus ›', url='https://t.me/TmLotus'},
+},
+}
+}
+LuaTele.sendText(msg_chat_id,msg_id,'◍ تم تعين الايدي الجديد',"md",true, false, false, false, reply_markup)
 end
 if Redis:get(FNKER.."FNKER:Change:Name:Bot"..msg.sender.user_id) then 
 if text == "الغاء" or text == 'الغاء الامر ۩' then   
@@ -3358,16 +3367,76 @@ Redis:srem(FNKER.."FNKER:ChekBotAdd",msg_chat_id)
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*۩┊المجموعه : {*['..Get_Chat.title..']('..Info_Chats.invite_link.invite_link..')*}\n۩┊تم تعطيلها بنجاح *','md',true)
 end
 end
-if chat_type(msg.chat_id) == "GroupBot" and Redis:sismember(FNKER.."FNKER:ChekBotAdd",msg_chat_id) then
-Redis:incr(FNKER..'FNKER:Num:Message:User'..msg.chat_id..':'..msg.sender.user_id) 
-if text == "ايدي" and msg.reply_to_message_id == 0 then
-if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(FNKER..'FNKER:Channel:Join')}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n۩┊عليك الاشتراك في قناة البوت لـ استخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end 
-if not Redis:get(FNKER.."FNKER:Status:Id"..msg_chat_id) then
-return false
+
+
+if text and text:match('^تحكم @(%S+)$') then
+local UserName = text:match('^تحكم @(%S+)$') 
+if not msg.Admin then
+return send(msg_chat_id,msg_id,'\n* ✧ عذرآ الامر يخص〘 '..Controller_Num(7)..' 〙*',"md",true)  
 end
+if ChannelJoinch(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(FNKER..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(FNKER..'Chat:Channel:Join'..msg.chat_id)}, },}}
+return send(msg.chat_id,msg.id,'*\n ✧ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if ChannelJoin(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(FNKER..'Channel:Join:Name'), url = 't.me/'..Redis:get(FNKER..'Channel:Join')}, },}}
+return send(msg.chat_id,msg.id,'*\n ✧ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+local UserId_Info = bot.searchPublicChat(UserName)
+if not UserId_Info.id then
+return bot.sendText(msg_chat_id,msg_id,"\n ✧ عذرأ لا يوجد حساب بهذا المعرف ","md",true)  
+end
+if UserId_Info.type.is_channel == true then
+return bot.sendText(msg_chat_id,msg_id,"\n ✧ عذرأ لا تستطيع استخدام معرف قناة او قروب ","md",true)  
+end
+if UserName and UserName:match('(%S+)[Bb][Oo][Tt]') then
+return bot.sendText(msg_chat_id,msg_id,"\n ✧ عذرأ لا تستطيع استخدام معرف البوت ","md",true)  
+end
+local reply_markup = bot.replyMarkup{type = 'inline',data = {
+{
+{text = '• تحكم الاشرف • ', data = msg.sender_id.user_id..'/groupNumseteng//'..UserId_Info.id},
+},
+{
+{text = '• تحكم الرتبه • ', data = msg.sender_id.user_id..'/rankup//'..UserId_Info.id},
+},
+{
+{text = '• تحكم الاذعاج • ', data = msg.sender_id.user_id..'/sting//'..UserId_Info.id},
+},
+}
+}
+return bot.sendText(msg.chat_id,msg.id,'*\n✧ الـيـك قـائـمـة الـتـحـكم عـلـي الـعـضـو*',"md",false, false, false, false, reply_markup)
+end
+
+
+if text == 'تحكم' and msg.reply_to_message_id ~= 0 then
+if ChannelJoinch(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(FNKER..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(FNKER..'Chat:Channel:Join'..msg.chat_id)}, },}}
+return send(msg.chat_id,msg.id,'*\n ✧ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if ChannelJoin(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(FNKER..'Channel:Join:Name'), url = 't.me/'..Redis:get(FNKER..'Channel:Join')}, },}}
+return send(msg.chat_id,msg.id,'*\n ✧ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+local Message_Reply = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
+if UserInfo and UserInfo.type and UserInfo.type.FNKERbots == "userTypeBot" then
+return bot.sendText(msg_chat_id,msg_id,"\n✧ عذرأ لا تستطيع استخدام الامر على البوت ","md",true)  
+end
+local reply_markup = bot.replyMarkup{type = 'inline',data = {
+{
+{text = '• تحكم الاشرف • ', data = msg.sender_id.user_id..'/groupNumseteng//'..Message_Reply.sender.user_id}, 
+},
+{
+{text = '• تحكم الرتبه • ', data = msg.sender_id.user_id..'/rankup//'..Message_Reply.sender.user_id}, 
+},
+{
+{text = '• تحكم الاذعاج • ', data = msg.sender_id.user_id..'/sting//'..Message_Reply.sender.user_id}, 
+},
+}
+}
+return bot.sendText(msg.chat_id,msg.id,'*\n✧ الـيـك قـائـمـة الـتـحـكم عـلـي الـعـضـو*',"md",false, false, false, false, reply_markup)
+end
+
+
 local InfoUser = LuaTele.getUserFullInfo(msg.sender.user_id)
 local UserInfo = LuaTele.getUser(msg.sender.user_id)
 local photo = LuaTele.getUserProfilePhotos(msg.sender.user_id)
@@ -6607,24 +6676,6 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {{{text = '۩ مسح الادمنيه ۩', data = msg.sender.user_id..'/Addictive'},},}}
 return LuaTele.sendText(msg_chat_id, msg_id, ListMembers, 'md', false, false, false, false, reply_markup)
-end
-if text == "ترند" then
-if not msg.Manger then
-return send(msg_chat_id,msg_id,'\n*• هاذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
-end
-GroupAllRtba = Redis:hgetall(FNKER..':GroupUserCountMsg:'..msg.chat_id)
-GetAllNames  = Redis:hgetall(FNKER..':GroupNameUser:'..msg.chat_id)
-GroupAllRtbaL = {}
-for k,v in pairs(GroupAllRtba) do table.insert(GroupAllRtbaL,{v,k}) end
-Count,Kount,i = 8 , 0 , 1
-for _ in pairs(GroupAllRtbaL) do Kount = Kount + 1 end
-table.sort(GroupAllRtbaL, function(a, b) return tonumber(a[1]) > tonumber(b[1]) end)
-if Count >= Kount then Count = Kount end
-Text = " الاكثر تفاعلا هو : \n\n"
-for k,v in ipairs(GroupAllRtbaL) do
-if i <= Count then  Text = Text..i.."ـ ["..(GetAllNames[v[2]] or "خطأ بالأسـم").."](tg://user?id="..v[2]..") ـ~> {*"..v[1].."*}  \n" end ; i=i+1
-end
-return send(msg.chat_id,msg.id,Text,"md")
 end
 
 if text == 'المميزين' then
@@ -16383,8 +16434,8 @@ local List = {
 ]],
 [[
 »»——- ★ 𝒔??𝒖𝒓𝒄𝒆 𝒄𝒂𝒓𝒍𝒐𝒔 ★ ——-««
-☆• 𝐮𝐬𝐞𝐫 : #username ??  
-☆• ??𝐝  : #id 𖣬
+☆• 𝐮𝐬𝐞𝐫 : #username 𖣬  
+☆• 𝐢𝐝  : #id 𖣬
 ☆• 𝐦𝐬𝐠  : #msgs 𖣬 
 ☆• 𝐬𝐭𝐚 : #stast 𖣬 
 »»——- ★ 𝒔𝒐𝒖𝒓𝒄𝒆 𝒄𝒂𝒓𝒍𝒐𝒔 ★ ——-««
@@ -16404,7 +16455,7 @@ local List = {
 .𖣂 𝙢𝙨𝙂𝙨 , #msgs
 .𖣂 𝙨𝙩𝙖𝙨𝙩 , #stast  
 .𖣂 𝙂𝙖𝙢𝙨 , #game 
-»»——- ★ 𝒔𝒐𝒖𝒓𝒄𝒆 𝒄𝒂𝒓𝒍𝒐𝒔 ★ ——-««
+»»——- ★ 𝒔𝒐𝒖𝒓𝒄𝒆 𝒄??𝒓??𝒐𝒔 ★ ——-««
 ]]}
 local Text_Rand = List[math.random(#List)]
 Redis:set(FNKER.."FNKER:Set:Id:Group"..msg.chat_id,Text_Rand)
@@ -19390,6 +19441,24 @@ hggg = '▹ الان ارسل اسم الشخص :'
 LuaTele.sendText(msg_chat_id,msg_id,hggg) 
 return false
 end
+end
+if text == "ترند" or text == "المتفاعلين" and ChCheck(msg) then
+if not msg.Admin then
+return LuaTele.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender.user_id,'✯︰هذا الامر يخص ↫ '..Controller_Num(8)..' .\n•-› X').Warning,"md",true)    
+end
+GroupAllRtba = Redis:hgetall(FNKER..':GroupUserCountMsg:'..msg.chat_id)
+GetAllNames  = Redis:hgetall(FNKER..':GroupNameUser:'..msg.chat_id)
+GroupAllRtbaL = {}
+for k,v in pairs(GroupAllRtba) do table.insert(GroupAllRtbaL,{v,k}) end
+Count,Kount,i = 8 , 0 , 1
+for _ in pairs(GroupAllRtbaL) do Kount = Kount + 1 end
+table.sort(GroupAllRtbaL, function(a, b) return tonumber(a[1]) > tonumber(b[1]) end)
+if Count >= Kount then Count = Kount end
+Text = "✯︰ترند افضل المتفاعلين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
+for k,v in ipairs(GroupAllRtbaL) do
+if i <= Count then  Text = Text..i.." - ["..(GetAllNames[v[2]] or "خطأ بالأسـم").."](tg://user?id="..v[2]..") •-› *("..v[1]..")* 🌟 \n" end ; i=i+1
+end
+return LuaTele.sendText(msg.chat_id,msg.id,Text,"md")
 end
 if text == 'ترتيب الاوامر' then
 if not msg.Managers or not msg.Mamagers then
