@@ -19903,7 +19903,6 @@ Redis:del(FNKER.."FNKER:SilentGroup:Group"..ChatId)
 LuaTele.editMessageText(ChatId,Msg_id,"*⌯︙ تم مسح المكتومين *", 'md', false)
 end
 end
-https.request(""..resultss..""..LUATELE.."")
 end
 end
 
