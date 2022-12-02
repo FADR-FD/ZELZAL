@@ -12946,8 +12946,6 @@ name = string.gsub(name,"تفاحه","🍎")
 name = string.gsub(name,"باذنجان","🍆")
 return LuaTele.sendText(msg_chat_id,msg_id," ︙ اسرع واحد يدز معنى السمايل ~ { "..name.." }","md",true)  
 end
-
-ㅤㅤㅤㅤㅤㅤㅤㅤㅤ:
 if text == 'عقاب' then
 if not redis:get(bot_id.."Status:Games"..msg.chat_id) then
 return bot.sendText(msg.chat_id,msg.id," • الالعاب معطلة من قبل المشرفين","md",true)
