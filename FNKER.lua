@@ -16160,7 +16160,7 @@ if photo.total_count > 0 then
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '•' حــ۫͜ـســﻭ .ʜᴀssᴏ.', url = 't.me/L_U_2'},{text = '𝐒𝐨𝐮𝐫𝐜𝐞 𝐥𝐞𝐚𝐝𝐞𝐫', url = "https://t.me/BB88B3"}
+{text = ', url = 't.me/L_U_2'},{text = '𝐒𝐨𝐮𝐫𝐜𝐞 𝐥𝐞𝐚𝐝𝐞𝐫', url = "https://t.me/BB88B3"}
 },
 {
 {text = '➕ اضفني لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
@@ -16174,7 +16174,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '•' حــ۫͜ـســﻭ .ʜᴀssᴏ.', url = 't.me/L_U_2'},{text = '𝐒𝐨𝐮𝐫𝐜𝐞 𝐥𝐞𝐚𝐝𝐞𝐫', url = "https://t.me/BB88B3"}
+{text = ', url = 't.me/L_U_2'},{text = '𝐒𝐨𝐮𝐫𝐜𝐞 𝐥𝐞𝐚𝐝𝐞𝐫', url = "https://t.me/BB88B3"}
 },
 {
 {text = '➕ اضفني لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
