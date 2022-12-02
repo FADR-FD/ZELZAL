@@ -16133,56 +16133,41 @@ LuaTele.sendText(msg_chat_id,msg_id, "*⌯︙ تم تحديث الملفات *",
 dofile('FNKER.lua')  
 end
 if text == '/start' then
-local photo = LuaTele.getUserProfilePhotos(FNKER)
-local ban = LuaTele.getUser(FNKER)
-local bain = LuaTele.getUser(msg.sender.user_id)
-Redis:sadd(FNKER..'Num:User:Pv',msg.sender.user_id)  
+Redis:sadd(FNKER..'FNKER:Num:User:Pv',msg.sender.user_id)  
 if not msg.ControllerBot then
-if not Redis:get(FNKER.."Start:Bot") then
-if bain.username then
-banusername = '[@'..bain.username..']'
-else
-banusername = 'لا يوجد'
-end
-if bain.first_name then
-baniusername = '*['..bain.first_name..'](tg://user?id='..bain.id..')*'
-else
-baniusername = 'لا يوجد'
-end
-local CmdStart = '*\n⌯︙ أهلآ بك في بوت '..(Redis:get(FNKER.."Name:Bot") or "ليدر")..
-'\n⌯︙ اختصاص البوت حماية المجموعات'..
-'\n⌯︙ لتفعيل البوت عليك اتباع مايلي ...'..
-'\n⌯︙ اضف البوت الى مجموعتك'..
-'\n⌯︙ ارفعه ادمن {مشرف}'..
-'\n⌯︙ ارسل كلمة { تفعيل } ليتم تفعيل الجروب'..
-'\n⌯︙ مطور البوت ↵ ⦗ @'..UserSudo..'⦘*'
-if photo.total_count > 0 then
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = ', url = 't.me/L_U_2'},{text = '𝐒𝐨𝐮𝐫𝐜𝐞 𝐥𝐞𝐚𝐝𝐞𝐫', url = "https://t.me/BB88B3"}
-},
+if not Redis:get(FNKER.."FNKER:Start:Bot") then
+local CmdStart = '*\n- أهلآ بك في بوت '..(Redis:get(FNKER.."FNKER:Name:Bot") or "سيزر")..
+'\n- اختصاص البوت حماية المجموعات'..
+'\n- لتفعيل البوت عليك اتباع مايلي ...'..
+'\n- اضف البوت الى مجموعتك'..
+'\n- ارفعه ادمن {مشرف}'..
+'\n- ارسل كلمة { تفعيل } ليتم تفعيل المجموعه'..
+'\n- مطور البوت  يمكن ايضا ارسال /tiger لروئيه اوامر التسليه← {@'..UserSudo..'}*'
+local reply_markup = LuaTele.replyMarkup{
+type = 'inline',
+data = {
 {
 {text = '➕ اضفني لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
+{
+{text = '- 𝒔𝒐𝒖𝒓𝒄𝒆 𝒄𝒂𝒓𝒍𝒐𝒔', url = 't.me/KERLOOS23'}, 
+},
 }
-local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(CmdStart).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-LuaTele.sendText(Sudo_Id,0,'*\n⌯︙ دخل شخص إلى البوت \n⩹━━━━𖥕RedBull𖥕━━━━⩺\n⌯︙ اسمه :- '..baniusername..' \n⌯︙ ايديه :-  : '..msg.sender.user_id..'\n⌯︙ - معرفة '..banusername..' \n*',"md")
+}
+return LuaTele.sendText(msg_chat_id,msg_id,CmdStart,"md",false, false, false, false, reply_markup)
 else
 local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = ', url = 't.me/L_U_2'},{text = '𝐒𝐨𝐮𝐫𝐜𝐞 𝐥𝐞𝐚𝐝𝐞𝐫', url = "https://t.me/BB88B3"}
-},
-{
 {text = '➕ اضفني لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
+{
+{text = '- 𝒔𝒐𝒖𝒓𝒄𝒆 𝒄𝒂𝒓𝒍𝒐𝒔', url = 't.me/KERLOOS23'}, 
+},
 }
 }
-return LuaTele.sendText(msg_chat_id,msg_id,Redis:get(FNKER.."Start:Bot"),"md",false, false, false, false, reply_markup)
-end
+return LuaTele.sendText(msg_chat_id,msg_id,Redis:get(FNKER.."FNKER:Start:Bot"),"md",false, false, false, false, reply_markup)
 end
 else
 local reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_personal = true,
