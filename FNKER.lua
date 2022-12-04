@@ -10223,9 +10223,6 @@ bot.sendPhoto(data.message.chat_id, data.message.id, photo.photos[1].sizes[#phot
 else
 bot.sendText(data.message.chat_id,data.message.id,"*𝁫 : اهلا بك في بوت الحمايه \n𝁫 : وضيفتي حمايه المجموعات من السبام والتفليش والخ..\n𝁫 : لتفعيل البوت ارسل كلمه *تفعيل","md",true, false, false, false, kup)
 end
-end
-end
-end
 elseif data and data.luatele and data.luatele == "updateMessageEdited" then
 local msg = bot.getMessage(data.chat_id, data.message_id)
 if tonumber(msg.sender.user_id) ~= tonumber(bot_id) then  
