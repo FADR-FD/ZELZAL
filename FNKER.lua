@@ -14756,10 +14756,10 @@ end
 end
 if text == "سمايلات" or text == "سمايل" then
 if Redis:get(FNKER.."FNKER:Status:Games"..msg.chat_id) then
-Redis:del(FNKER.."FNKER:Game:Smile"..msg.chat_id)
+Redis:del(FNKER.."Game:Smile"..msg.chat_id)
 Random = {"🍏","🍎","🍐","🍊","🍋","🍉","🍇","🍓","🍈","🍒","🍑","🍍","🥥","🥝","🍅","🍆","🥑","🥦","🥒","??","🌽","🥕","🥔","🥖","🥐","🍞","🥨","🍟","🧀","🥚","🍳","🥓","🥩","🍗","🍖","🌭","🍔","🍠","🍕","🥪","🥙","☕️","🥤","🍶","🍺","🍻","🏀","⚽️","🏈","⚾️","🎾","🏐","??","🎱","🏓","??","🥅","🎰","🎮","🎳","🎯","🎲","🎻","🎸","🎺","🥁","🎹","??","🎧","🎤","🎬","??","🎭","🎪","🎟","🎫","🎗","🏵","🎖","🏆","🥌","🛷","🚗","🚌","🏎","🚓","🚑","🚚","🚛","??","⚔","🛡","🔮","🌡","💣","۩","📍","📓","📗","📂","📅","📪","📫","۩","📭","⏰","📺","🎚","☎️","📡"}
 SM = Random[math.random(#Random)]
-Redis:set(FNKER.."FNKER:Game:Smile"..msg.chat_id,SM)
+Redis:set(FNKER.."Game:Smile"..msg.chat_id,SM)
 return LuaTele.sendText(msg_chat_id,msg_id,"۩┊اسرع واحد يدز هذا السمايل ? ~ {`"..SM.."`}","md",true)  
 end
 end
@@ -16372,7 +16372,7 @@ LuaTele.sendText(msg.chat_id,msg.id, "*۩┊مـاعندك حسـاب بنكي �
 end
 end
 if text == "كت" or text == "كت تويت" then
-if Redis:get(FNKER.."FNKER:Status:Games"..msg.chat_id) then
+if Redis:get(FNKER.."Status:Games"..msg.chat_id) then
 local texting = {
 "*- مسلسل يستحق المشاهدة؟*",
 "*- أفضل نوع عطر بالنسبة لك؟*",
@@ -16812,11 +16812,11 @@ local texting = {" جماد بحرف ⇦ ر  ",
 return LuaTele.sendText(msg_chat_id,msg_id,texting[math.random(#texting)],'md')
 end
 if text == "شخصيات" or text == "مشاهير" then
-if Redis:get(FNKER.."FNKER:Status:Games"..msg.chat_id) then
+if Redis:get(FNKER.."Status:Games"..msg.chat_id) then
 Redis:del(FNKER.."FNKER:Game:Mshaher"..msg.chat_id)
 KlamSpeed = {"شوان","سام","ايد شيرين","جاستن","اريانا","سام سميث","ايد","جاستن","معزه","ميسي","صلاح","محمد صلاح","احمد عز","سونيك","كريستيانو","كريستيانو رونالدو","رامز جلال","امير كراره","ويجز","بابلو","تامر حسني","ابيو","شيرين","نانسي عجرم","محمد رمضان","احمد حلمي","محمد هنيدي","حسن حسني","حماقي","احمد مكي"};
 name = KlamSpeed[math.random(#KlamSpeed)]
-Redis:set(FNKER.."FNKER:Game:Mshaher"..msg.chat_id,name)
+Redis:set(FNKER.."Game:Mshaher"..msg.chat_id,name)
 local MsgId = msg.id/2097152/0.5
 name = string.gsub(name,"شوان","https://t.me/HC6HH/8")
 name = string.gsub(name,"سام","https://t.me/HC6HH/7")
@@ -16854,11 +16854,11 @@ https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id="..msg.
 end
 end
 if text == "الاسرع" or tect == "ترتيب" then
-if Redis:get(FNKER.."FNKER:Status:Games"..msg.chat_id) then
-Redis:del(FNKER.."FNKER:Game:Monotonous"..msg.chat_id)
+if Redis:get(FNKER.."Status:Games"..msg.chat_id) then
+Redis:del(FNKER.."Game:Monotonous"..msg.chat_id)
 KlamSpeed = {"سحور","سياره","استقبال","قنفه","ايفون","بزونه","مطبخ","كرستيانو","دجاجه","مدرسه","الوان","غرفه","ثلاجه","كهوه","سفينه","العراق","محطه","طياره","رادار","منزل","مستشفى","كهرباء","تفاحه","اخطبوط","سلمون","فرنسا","برتقاله","تفاح","مطرقه","بتيته","لهانه","شباك","باص","سمكه","ذباب","تلفاز","حاسوب","انترنيت","ساحه","جسر"};
 name = KlamSpeed[math.random(#KlamSpeed)]
-Redis:set(FNKER.."FNKER:Game:Monotonous"..msg.chat_id,name)
+Redis:set(FNKER.."Game:Monotonous"..msg.chat_id,name)
 name = string.gsub(name,"سحور","س ر و ح")
 name = string.gsub(name,"سياره","ه ر س ي ا")
 name = string.gsub(name,"استقبال","ل ب ا ت ق س ا")
@@ -16903,11 +16903,11 @@ return LuaTele.sendText(msg_chat_id,msg_id,"۩┊اسرع واحد يرتبها 
 end
 end
 if text == "حزوره" then
-if Redis:get(FNKER.."FNKER:Status:Games"..msg.chat_id) then
-Redis:del(FNKER.."FNKER:Game:Riddles"..msg.chat_id)
+if Redis:get(FNKER.."Status:Games"..msg.chat_id) then
+Redis:del(FNKER.."Game:Riddles"..msg.chat_id)
 Hzora = {"الجرس","عقرب الساعه","السمك","المطر","5","الكتاب","البسمار","7","الكعبه","بيت الشعر","لهانه","انا","امي","الابره","الساعه","22","غلط","كم الساعه","البيتنجان","البيض","المرايه","الضوء","الهواء","الضل","العمر","القلم","المشط","الحفره","البحر","الثلج","الاسفنج","الصوت","بلم"};
 name = Hzora[math.random(#Hzora)]
-Redis:set(FNKER.."FNKER:Game:Riddles"..msg.chat_id,name)
+Redis:set(FNKER.."Game:Riddles"..msg.chat_id,name)
 name = string.gsub(name,"الجرس","شيئ اذا لمسته صرخ ما هوه ؟")
 name = string.gsub(name,"عقرب الساعه","اخوان لا يستطيعان تمضيه اكثر من دقيقه معا فما هما ؟")
 name = string.gsub(name,"السمك","ما هو الحيوان الذي لم يصعد الى سفينة نوح عليه السلام ؟")
@@ -16945,7 +16945,7 @@ return LuaTele.sendText(msg_chat_id,msg_id,"۩┊اسرع واحد يحل الح
 end
 end
 if text == "اعلام" or text == "اعلام ودول" or text == "اعلام و دول" or text == "دول" then
-if Redis:get(FNKER.."FNKER:Status:Games"..msg.chat_id) then
+if Redis:get(FNKER.."Status:Games"..msg.chat_id) then
 Redis:del(FNKER.."Game:Countrygof"..msg.chat_id)
 Redis:del(FNKER.."Set:Country"..msg.chat_id)
 Country_Rand = {"مصر","العراق","السعوديه","المانيا","تونس","الجزائر","فلسطين","اليمن","المغرب","البحرين","فرنسا","سويسرا","تركيا","انجلترا","الولايات المتحده","كندا","الكويت","ليبيا","السودان","سوريا"}
@@ -16975,12 +16975,12 @@ return LuaTele.sendText(msg_chat_id,msg_id,"*۩┊اسـرع واحـد يرسـ
 end
 end
 if text == "معاني" then
-if Redis:get(FNKER.."FNKER:Status:Games"..msg.chat_id) then
-Redis:del(FNKER.."FNKER:Game:Meaningof"..msg.chat_id)
-Redis:del(FNKER.."FNKER:Set:Maany"..msg.chat_id)
+if Redis:get(FNKER.."Status:Games"..msg.chat_id) then
+Redis:del(FNKER.."Game:Meaningof"..msg.chat_id)
+Redis:del(FNKER..":Set:Maany"..msg.chat_id)
 Maany_Rand = {"قرد","دجاجه","بطريق","ضفدع","بومه","نحله","ديك","جمل","بقره","دولفين","تمساح","قرش","نمر","اخطبوط","سمكه","خفاش","اسد","فأر","ذئب","فراشه","عقرب","زرافه","قنفذ","تفاحه","باذنجان"}
 name = Maany_Rand[math.random(#Maany_Rand)]
-Redis:set(FNKER.."FNKER:Game:Meaningof"..msg.chat_id,name)
+Redis:set(FNKER.."Game:Meaningof"..msg.chat_id,name)
 name = string.gsub(name,"قرد","🐒")
 name = string.gsub(name,"دجاجه","🐔")
 name = string.gsub(name,"بطريق","🐧")
@@ -17010,9 +17010,9 @@ return LuaTele.sendText(msg_chat_id,msg_id,"۩┊اسرع واحد يدز معن
 end
 end
 if text == "العكس" then
-if Redis:get(FNKER.."FNKER:Status:Games"..msg.chat_id) then
-Redis:del(FNKER.."FNKER:Game:Reflection"..msg.chat_id)
-Redis:del(FNKER.."FNKER:Set:Aks"..msg.chat_id)
+if Redis:get(FNKER.."Status:Games"..msg.chat_id) then
+Redis:del(FNKER.."Game:Reflection"..msg.chat_id)
+Redis:del(FNKER.."Set:Aks"..msg.chat_id)
 katu = {"باي","فهمت","موزين","اسمعك","احبك","موحلو","نضيف","حاره","ناصي","جوه","سريع","ونسه","طويل","سمين","ضعيف","شريف","شجاع","رحت","عدل","نشيط","شبعان","موعطشان","خوش ولد","اني","هادئ"}
 name = katu[math.random(#katu)]
 Redis:set(FNKER.."FNKER:Game:Reflection"..msg.chat_id,name)
