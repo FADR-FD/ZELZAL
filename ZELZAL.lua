@@ -3248,6 +3248,7 @@ local Get_Is_Id = Get_Is_Id:gsub('#auto',TotalMsgT)
 local Get_Is_Id = Get_Is_Id:gsub('#game',NumberGames) 
 send(msg_chat_id,msg_id,Get_Is_Id,"md",true) 
 else
+end
 send(msg_chat_id,msg_id,
 '\n◂ اسمه ↫ '..Nn..
 '\n◂ ايديه ↫ '..UserId..
