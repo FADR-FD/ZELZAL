@@ -45,12 +45,12 @@ sudo luarocks install luasocket
 cd ../..
 rm -rf tmp
 unzip alah.zip
-sudo lua5.3 FNKER.lua
+sudo lua5.3 ZELZAL.lua
 ;;
 2)
 echo -e "\e[1m\e[32mجاري التشغيل ⟐ \e[0m"
 sleep 2
 unzip alah.zip
-sudo lua5.3 FNKER.lua
+sudo lua5.3 ZELZAL.lua
 ;;
 esac
